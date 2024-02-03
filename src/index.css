@@ -1,0 +1,130 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer  base{
+  html {
+    @apply scroll-smooth overflow-x-hidden overscroll-contain m-0 p-0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale
+  }
+
+  *, *::before, *::after {
+    @apply m-0 p-0 box-border no-underline 
+  }
+
+  body {
+    @apply m-0 p-0 dark:dark_bg dark:dark_text textLight bgLight font-round
+  }
+
+  img {
+    @apply w-full h-full object-cover object-center cursor-pointer
+  }
+
+  h2 {
+    @apply text-4xl sm:text-5xl font-semibold mt-0 mb-10 lg:mt-10 px-2 text-center pt-20
+  }
+
+  p {
+    @apply text-base p-px my-0.5 sm:text-balance
+  }
+
+  strong {
+    @apply font-round font-semibold tracking-wider
+  }
+
+  
+  select {
+    @apply bg-transparent focus:outline-none focus:border-0 rounded-lg
+  }
+ 
+  [type='search'] {
+    @apply bg-stone-200 dark:bg-stone-400 w-full border-slate-300 shadow-inner focus:shadow-slate-400/60 textLight tracking-wide
+    focus:outline-none focus:border-0 focus:border-gray-400 focus:ring-0 caret-stone-900 rounded-lg py-2 pr-24 pl-8 font-medium placeholder:textLight
+    dark:placeholder:dark_text
+  }
+
+  option {
+    @apply dark:textLight inline-block
+  }
+}
+
+@layer utilities{
+  .dark_bg {
+   @apply bg-slate-900
+  }
+
+  .dark_bgSoft {
+    @apply bg-slate-800
+  }
+
+  .dark_text {
+    @apply text-stone-300
+  }
+
+  .bgLight {
+    @apply bg-stone-100/30
+  }
+
+  .bgLightSoft {
+    @apply bg-stone-900
+  }
+
+  .textLight {
+    @apply text-stone-800
+  }
+
+  .line {
+    @apply border-solid dark:border-green-500 border-amber-500
+  }
+
+  .lineSoft {
+    @apply border-solid dark:border-green-400 border-amber-400
+  }
+
+  .bgObject {
+    @apply dark:bg-green-500 bg-amber-500
+  }
+
+  .bgObjectSoft {
+    @apply dark:bg-green-400 bg-amber-400
+  }
+
+  .transitionEffect {
+    @apply transition-all duration-300 delay-100 ease-linear
+  }
+
+  .navlink {
+    @apply h-px mt-1 w-0 border-0 opacity-0 invisible group-hover:w-[60%] group-hover:border group-hover:line group-hover:opacity-100 group-hover:visible 
+    transition-all duration-300 delay-100 ease-linear block before:w-0 before:border-0 before:opacity-0 before:invisible before:absolute 
+    group-hover:before:border group-hover:before:line group-hover:before:opacity-100 group-hover:before:visible before:left-[65%] group-hover:before:w-[18%] 
+    before:transition-all before:duration-300 before:delay-100 before:ease-linear after:transition-all after:duration-300 after:delay-100 after:ease-linear
+    before:h-px before:-mt-px after:w-0 after:border-0 after:opacity-0 after:invisible after:absolute group-hover:after:border group-hover:after:line 
+    group-hover:after:opacity-100 group-hover:after:visible after:left-[88%] group-hover:after:w-[12%] after:h-px after:-mt-px
+  }
+
+  .active {
+    @apply w-[60%] border line h-px mt-1 block before:absolute before:border before:line before:left-[65%] before:w-[18%] before:h-px before:-mt-px
+    after:absolute after:border after:line after:left-[88%] after:w-[12%] after:h-px after:-mt-px
+  }
+
+  .button {
+    @apply my-5 inline-block font-semibold font-poppins text-sm lg:text-lg relative isolate z-10 shadow-2xl shadow-transparent dark:hover:shadow-green-400 hover:shadow-amber-400
+    before:absolute before:inset-0 before:rounded-lg before:-bottom-[30%] before:left-0 before:shadow-2xl before:shadow-transparent dark:before:hover:shadow-green-400 before:hover:shadow-amber-400
+    after:absolute after:inset-0 after:shadow-2xl after:shadow-transparent dark:after:hover:shadow-green-400 after:hover:shadow-amber-400 before:transitionEffect after:transitionEffect
+    transitionEffect border line px-2 py-1 rounded-lg hover:border-transparent hover:bgObjectSoft hover:z-10 textLight dark:dark_text;
+  }
+
+  .button::before {
+    transform: perspective(16px) rotateX(10deg) scale(0.9, 0.5);
+    -webkit-transform: perspective(16px) rotateX(10deg) scale(0.9, 0.5);
+    -moz-transform: perspective(16px) rotateX(10deg) scale(0.9, 0.5);
+    -ms-transform: perspective(16px) rotateX(10deg) scale(0.9, 0.5);
+    -o-transform: perspective(16px) rotateX(10deg) scale(0.9, 0.5);
+}
+
+.BTop {
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+}
