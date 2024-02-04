@@ -184,13 +184,23 @@ export const SinglePageText = {
 		zh: "面积",
 	},
 	symbol: {
-		en: "symbol",
-		ko: "상징",
-		zh: "象征",
+		en: "currency symbol",
+		ko: "통화 기호",
+		zh: "货币符号",
 	},
 	UNMember: {
 		en: "UN member",
 		ko: "UN 회원",
 		zh: "联合国会员",
+	},
+	longitude: {
+		en: "longitude",
+		ko: "경도",
+		zh: "经度",
+	},
+	latitude: {
+		en: "latitude",
+		ko: "위도",
+		zh: "纬度",
 	},
 }

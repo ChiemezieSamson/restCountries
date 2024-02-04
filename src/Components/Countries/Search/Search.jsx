@@ -17,8 +17,8 @@ const Search = ({lang, handleSetSearchResult, countries}) => {
     if (inputValue !== "") {// Using a regular expression to check if the value contains only letters
       if (searcByOption === "name") {
        const newList = countries.filter(countries => {
-        const NameWithPositionStart = countries.name.split(" ")[1] 
-        console.log( NameWithPositionStart);
+        const NameWithPositionStart = countries?.name ? countries?.name?.split(" ")[1] : ""
+
         const foundSearch =  NameWithPositionStart !== undefined ? NameWithPositionStart?.startsWith(inputValue?.toLowerCase()?.trim()) : "" || countries?.name?.startsWith(inputValue?.toLowerCase()?.trim()) || countries?.name === inputValue?.toLowerCase()?.trim()
        
         return foundSearch
