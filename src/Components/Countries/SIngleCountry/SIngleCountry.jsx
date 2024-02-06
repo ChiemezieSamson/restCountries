@@ -3,7 +3,6 @@ import { useOutletContext, useParams } from 'react-router-dom';
 import { SinglePageText, useFetchSingleCountry } from './data';
 import { useSinglePageList } from './SinglePageList/SinglePageList';
 import { useWindowSize } from '@uidotdev/usehooks';
-import MapComponent from './MapComponent/MapComponent ';
 
 const SIngleCountry = () => {
   let { countryId } = useParams();
@@ -32,7 +31,7 @@ const SIngleCountry = () => {
       </div>
 
       <ul className='mt-40 md:mt-80 grid gap-5 max-w-4xl mx-auto px-4'>
-        {list.map((countryInfo) => {
+        {list?.map((countryInfo) => {
           return (
             <li key={countryInfo.id} className='grid grid-cols-2 sm:grid-cols-5 md:grid-cols-6 gap-5 items-center justify-center'>
               <span className='sm:col-span-2 col-span-2 underline underline-offset-4 sm:no-underline lg:text-lg font-poppins bg-slate-300/300 textLight dark:dark_text font-semibold dark:bgLight p-2 shadow-md dark:shadow-slate-50/50 
@@ -47,9 +46,7 @@ const SIngleCountry = () => {
             </li>
           )
         })}
-      </ul> 
-
-      {/* <MapComponent mapLink={country?.maps?.googleMaps} />        */}
+      </ul>       
     </div>
   )
 }

@@ -15,13 +15,13 @@ export const useSinglePageList = (country, lang) => {
       const converted = timeZones.map((timeZone) => {
         const [offsetHours, offsetMinutes] = timeZone.match(/([+-]\d+):(\d+)/).slice(1).map(Number);
         const convertedTime = new Date(baseTime.getTime() + (offsetHours * 60 + offsetMinutes) * 60 * 1000);
-        return convertedTime.toLocaleString('en-US', { timeZoneName: 'short', hour12: true });
+        return convertedTime.toLocaleString(lang, { timeZoneName: 'short', hour12: true });
       });
 
       setConvertedTimes(converted);
     }
 
-  }, [country]);
+  }, [country, lang]);
 
 
   if (country) {
