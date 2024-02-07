@@ -11,14 +11,20 @@ export const useSinglePageList = (country, lang) => {
       const timeZones = country?.timezones ? country?.timezones : []
       
       const baseTime = new Date();
+      let countryTimeZone
+      
+      if (timeZones.length >= 2 || timeZones[0]?.match(/([+-]\d+):(\d+)/)) {
+        
+        countryTimeZone = timeZones?.map((timeZone) => {
+            const [offsetHours, offsetMinutes] = timeZone?.match(/([+-]\d+):(\d+)/)?.slice(1).map(Number);
+            const convertedTime = new Date(baseTime.getTime() + (offsetHours * 60 + offsetMinutes) * 60 * 1000);
+            return convertedTime.toLocaleString(lang, { timeZoneName: 'short', hour12: true });
+          });
+        } else {
+        countryTimeZone = country?.timezones !== undefined ? country?.timezones : [""]
+      }
 
-      const converted = timeZones.map((timeZone) => {
-        const [offsetHours, offsetMinutes] = timeZone.match(/([+-]\d+):(\d+)/).slice(1).map(Number);
-        const convertedTime = new Date(baseTime.getTime() + (offsetHours * 60 + offsetMinutes) * 60 * 1000);
-        return convertedTime.toLocaleString(lang, { timeZoneName: 'short', hour12: true });
-      });
-
-      setConvertedTimes(converted);
+      setConvertedTimes(countryTimeZone);
     }
 
   }, [country, lang]);
