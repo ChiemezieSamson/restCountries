@@ -1,8 +1,11 @@
+import Population from "./../asset/images/population.jpg";
+import Currency from "./../asset/images/currency.jpg";
+
 export const Indexdata = {
 	title: {
-		en: "World Countries Data",
-		zh: "全球国家数据",
-		ko: "세계 국가 데이터",
+		en: "World Countries",
+		zh: "全球国家",
+		ko: "세계 국가",
 	},
 	sub_title: {
 		en: "Discover the World's Wonders",
@@ -20,3 +23,26 @@ export const Indexdata = {
 		ko: "지금 탐험하기",
 	},
 };
+
+export const populationCurrencyImage = [
+	{
+		id: 0,
+		name: {
+			en: "population",
+			ko: "인구",
+			zh: "人口",
+		},
+		image: Population,
+		url: "/population",
+	},
+	{
+		id: 1,
+		name: {
+			en: "currency",
+			ko: "통화",
+			zh: "货币",
+		},
+		image: Currency,
+		url: "/currency",
+	},
+];

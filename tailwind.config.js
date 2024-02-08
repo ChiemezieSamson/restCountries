@@ -20,6 +20,9 @@ module.exports = {
 				lora: ["Lora", "serif"],
 				josefin: ["Josefin Sans", "sans-serif"],
 			},
+			backgroundImage: (theme) => ({
+				"your-image": "url('./src/Components/asset/images/HomeImage.jpg')",
+			}),
 		},
 	},
 	plugins: [],

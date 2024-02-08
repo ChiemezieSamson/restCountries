@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { total } from '../data'
 import { arrangementIcons } from './data'
 
 const ArrangeMent = ({lang, searchResult, countries, finalResult, handleSetArrangeResult}) => {
   const [clickIcon, setClickedIcon] = useState("ascend")
   const [sortLastArrangment, setsortLastArrangment] = useState("")
-  const [savelanguage, setSavelanguage] = useState("")
   const [toggleButton, setToggleButton] = useState(false)
 
   const handlerandom = (event) => {

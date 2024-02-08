@@ -22,10 +22,6 @@
     @apply w-full h-full object-cover object-center cursor-pointer
   }
 
-  h2 {
-    @apply text-4xl sm:text-5xl font-semibold mt-0 mb-10 lg:mt-10 px-2 text-center pt-20
-  }
-
   p {
     @apply text-base p-px my-0.5 sm:text-balance
   }
@@ -126,5 +122,12 @@
 
 .BTop {
   clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.HomeImage {
+  background-image: url('./Components/asset/images/HomeImage.jpg');
+  background-size: cover; 
+  background-repeat: no-repeat; 
+  background-position: center; 
 }
 }
