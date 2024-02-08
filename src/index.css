@@ -126,6 +126,14 @@
 
 .HomeImage {
   background-image: url('./Components/asset/images/HomeImage.jpg');
+}
+
+.HomefooterImage {
+  background-image: url('./Components/asset/images/footer.jpg');
+}
+
+.HomefooterImage, 
+.HomeImage {
   background-size: cover; 
   background-repeat: no-repeat; 
   background-position: center; 
