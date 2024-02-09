@@ -27,7 +27,7 @@ const Grid = ({countries, count, size, buttonClicked}) => {
       <ul className={`grid gap-4 xs:grid-cols-2 md:grid-cols-3 list items-center justify-center`}>
         {countries?.map((country, index) => {
           return (
-            <li key={country?.id + index.toString()} className='inline-block relative group hover:scale-105 focus-within:scale-110 transitionEffect m-4 max-w-[220px] mx-auto' title={country?.name?.length > 10 ? country?.name : ""}>
+            <li key={country?.id + index.toString()} className='inline-block relative hover:scale-105 focus-within:scale-110 transitionEffect m-4 max-w-[220px] mx-auto' title={country?.name?.length > 10 ? country?.name : ""}>
               <Link to={`/countries/${country?.id}`} className='lg:text-lg grid items-center justify-center bg-slate-300/300 textLight dark:dark_text font-semibold dark:bgLight p-2 rounded-xl shadow-md dark:shadow-slate-50/50 
                 shadow-slate-800/50 backdrop-blur-[1px] dark:backdrop-blur-0'>
                 <img 

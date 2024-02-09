@@ -1,7 +1,8 @@
 import React from 'react'
 import { FaLongArrowAltRight } from 'react-icons/fa'
 import { Link, useOutletContext } from 'react-router-dom'
-import { Indexdata, populationCurrencyImage, worldRegionsData } from './data';
+import { Indexdata, populationCurrencyImage } from './data';
+import { worldRegionsData } from '../sharedComponent/sharedComponent';
 
 const Index = () => {
   const [isLanguage] = useOutletContext();

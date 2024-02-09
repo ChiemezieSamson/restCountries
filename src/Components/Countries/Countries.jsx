@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { useApiFetchingComponent } from './data'
 import { Outlet, useOutletContext } from 'react-router-dom';
 import { useWindowSize } from '@uidotdev/usehooks';
 import { useDetailedCountriesName } from './SharedComponent/SharedComponent';
+import { useApiFetchingComponent } from '../sharedComponent/sharedComponent';
 
 
 const Countries = () => {

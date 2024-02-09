@@ -32,3 +32,9 @@ export const arrangementIcons = [
 		icon: <FaSortAlphaUpAlt className="inline-block" />,
 	},
 ];
+
+export const total = {
+	en: "Total Countries",
+	zh: "总国家",
+	ko: "총 국가",
+};

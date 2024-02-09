@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import { total } from '../data'
-import { arrangementIcons } from './data'
+import { arrangementIcons, total } from './data'
 
 const ArrangeMent = ({lang, searchResult, countries, finalResult, handleSetArrangeResult}) => {
   const [clickIcon, setClickedIcon] = useState("ascend")

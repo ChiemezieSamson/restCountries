@@ -4,6 +4,9 @@ import Index from "./Components/Index/Index";
 import Countries from "./Components/Countries/Countries";
 import CountiersIndex from "./Components/Countries/CountiersIndex/CountiersIndex";
 import SIngleCountry from "./Components/Countries/SIngleCountry/SIngleCountry";
+import Regions from "./Components/Regions/Regions";
+import RegionIndex from "./Components/Regions/RegionIndex/RegionIndex";
+import SingleRegion from "./Components/Regions/SingleRegion/SingleRegion";
 
 const App = createBrowserRouter([
 	{
@@ -29,6 +32,23 @@ const App = createBrowserRouter([
 					{
 						path: "/countries/:countryId",
 						element: <SIngleCountry />,
+						errorElement: <div>Not Found</div>,
+					},
+				],
+			},
+			{
+				path: "regions",
+				element: <Regions />,
+				errorElement: <div>Not Found</div>,
+				children: [
+					{
+						index: true,
+						element: <RegionIndex />,
+						errorElement: <div>Not Found</div>,
+					},
+					{
+						path: "/regions/:regionsId",
+						element: <SingleRegion />,
 						errorElement: <div>Not Found</div>,
 					},
 				],
