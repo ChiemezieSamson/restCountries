@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 import Africa from "./../asset/images/africa-icon.png";
+import Antarctica from "./../asset/images/antarctica-icon.png";
 import Asia from "./../asset/images/asia-icon.png";
 import CentralAmerica from "./../asset/images/central-america-icon.png";
 import Europe from "./../asset/images/europe-icon.png";
-import MiddleEast from "./../asset/images/middle-east-icon.png";
 import NorthAmerica from "./../asset/images/north-america-icon.png";
 import Oceania from "./../asset/images/oceania-icon.png";
 import SouthAmerica from "./../asset/images/south-america-icon.png";
 import Caribbean from "./../asset/images/carribbean-icon.png";
+import { Link } from "react-router-dom";
+
 
 export const useApiFetchingComponent = (login) => {
 	const [data, setData] = useState(null);
@@ -57,6 +59,16 @@ export const worldRegionsData = [
 	{
 		id: 1,
 		name: {
+			en: "Antarctic",
+			ko: "남극",
+			zh: "南极洲",
+		},
+		url: "/regions/antarctic",
+		image: Antarctica,
+	},
+	{
+		id: 2,
+		name: {
 			en: "Asia",
 			ko: "아시아",
 			zh: "亚洲",
@@ -65,7 +77,7 @@ export const worldRegionsData = [
 		image: Asia,
 	},
 	{
-		id: 2,
+		id: 3,
 		name: {
 			en: "Central America",
 			ko: "중앙 아메리카",
@@ -75,7 +87,7 @@ export const worldRegionsData = [
 		image: CentralAmerica,
 	},
 	{
-		id: 3,
+		id: 4,
 		name: {
 			en: "Europe",
 			ko: "유럽",
@@ -83,16 +95,6 @@ export const worldRegionsData = [
 		},
 		url: "/regions/europe",
 		image: Europe,
-	},
-	{
-		id: 4,
-		name: {
-			en: "Middle East",
-			ko: "중동",
-			zh: "中东 ",
-		},
-		url: "/regions/middle east",
-		image: MiddleEast,
 	},
 	{
 		id: 5,
@@ -127,7 +129,7 @@ export const worldRegionsData = [
 	{
 		id: 8,
 		name: {
-			en: "The Caribbean",
+			en: "Caribbean",
 			ko: "카리브해",
 			zh: "加勒比地区",
 		},
@@ -135,3 +137,30 @@ export const worldRegionsData = [
 		image: Caribbean,
 	},
 ];
+
+
+export const total = {
+	en: "Total Countries",
+	zh: "总国家",
+	ko: "총 국가",
+};
+
+
+export const RegionListComponent = ({region, lang}) => {
+	return (
+		<ul className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-5 mt-20 items-center justify-center'>
+		{region.map(region => {
+			return (
+				<li key={region.id} className='inline-block text-center mt-10 '>
+					<Link to={region.url}>
+						<figure className='inline-block'>
+							<img src={region.image} alt={region.name[lang]} className='size-28 sm:max-h-36 sm:w-full aspect-video object-fill mx-auto'/>
+							<figcaption className='inline-block mt-3 font-poppins font-semibold capitalize'>{region.name[lang]}</figcaption>
+						</figure>
+					</Link>
+				</li>
+			)
+		})}
+	</ul>
+	)
+}

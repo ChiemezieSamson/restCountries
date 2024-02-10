@@ -17,7 +17,7 @@ const RegionIndex = () => {
             shadow-slate-800/50 backdrop-blur-[1px] dark:backdrop-blur-0'>
               <Link to={region.url} className='block w-full p-2 h-full rounded-xl text-center'>
                 <figure className='inline-block text-center'>
-                  <img src={region.image} alt={region.name[lang]} className=''/>
+                  <img src={region.image} alt={region.name[lang]} className='w-full xl:size-60 xl:object-fill'/>
                   <figcaption className='inline-block mt-3 font-poppins font-semibold capitalize'>{region.name[lang]}</figcaption>
                 </figure>
               </Link>

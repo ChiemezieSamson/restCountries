@@ -30,7 +30,7 @@ const TotheTop = () => {
     <button 
       type="button"
       className={`${top === "block" ? "block" : "hidden"} BTop bgObjectSoft fixed bottom-8 right-2 z-50 outline-0 cursor-pointer text-4 hover:bgObject`}
-      onClick={() => window.scrollTo(0,500)}
+      onClick={() => window.scrollTo(0, 30)}
     >
       <span className="pt-4 px-2.5 inline-block align-bottom text-sm backdrop-blur">Top</span>
     </button>

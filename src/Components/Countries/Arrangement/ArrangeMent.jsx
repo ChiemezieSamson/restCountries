@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { arrangementIcons, total } from './data'
+import { arrangementIcons } from './data'
+import { total } from '../../sharedComponent/sharedComponent'
 
 const ArrangeMent = ({lang, searchResult, countries, finalResult, handleSetArrangeResult}) => {
   const [clickIcon, setClickedIcon] = useState("ascend")

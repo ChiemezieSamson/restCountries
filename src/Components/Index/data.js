@@ -41,9 +41,9 @@ export const Indexdata = {
 			ko: "세계 지역",
 		},
 		sub_title: {
-			en: "The 9 regions in the world",
-			zh: "世界的9个地区",
-			ko: "세계의 9개 지역",
+			en: "The regions in the world",
+			zh: "世界的个地区",
+			ko: "세계의 개 지역",
 		},
 	},
 };

@@ -42,7 +42,7 @@
   }
 
   option {
-    @apply dark:textLight inline-block
+    @apply textLight inline-block
   }
 }
 

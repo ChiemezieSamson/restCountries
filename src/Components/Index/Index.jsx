@@ -2,7 +2,7 @@ import React from 'react'
 import { FaLongArrowAltRight } from 'react-icons/fa'
 import { Link, useOutletContext } from 'react-router-dom'
 import { Indexdata, populationCurrencyImage } from './data';
-import { worldRegionsData } from '../sharedComponent/sharedComponent';
+import { RegionListComponent, worldRegionsData } from '../sharedComponent/sharedComponent';
 
 const Index = () => {
   const [isLanguage] = useOutletContext();
@@ -52,20 +52,7 @@ const Index = () => {
           <h2 className='text-center capitalize text-balance font-poppins text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-semibold mt-0 px-2'>{Indexdata.worldRegions.title[isLanguage]}</h2>
           <h4 className='px-2 py-1 my-2 font-semibold sm:text-lg md:text-xl lg:text-2xl text-center text-balance'>{Indexdata.worldRegions.sub_title[isLanguage]}</h4>
 
-          <ul className='grid grid-cols-2 sm:grid-cols-4 gap-5 mt-20 items-center justify-center'>
-            {worldRegionsData.map(region => {
-              return (
-                <li key={region.id} className='inline-block text-center mt-10 sm:last:col-span-4'>
-                  <Link to={region.url}>
-                    <figure className='inline-block'>
-                      <img src={region.image} alt={region.name[isLanguage]} className='size-28 sm:size-36 aspect-square object-fill mx-auto'/>
-                      <figcaption className='inline-block mt-3 font-poppins font-semibold capitalize'>{region.name[isLanguage]}</figcaption>
-                    </figure>
-                  </Link>
-                </li>
-              )
-            })}
-          </ul>
+          <RegionListComponent region={worldRegionsData} lang={isLanguage}/>
         </div>
       </div>
     </div>

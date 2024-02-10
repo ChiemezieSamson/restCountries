@@ -6,12 +6,12 @@ import { useWindowSize } from '@uidotdev/usehooks';
 import { FaMapMarkerAlt } from "react-icons/fa";
 
 const SIngleCountry = () => {
-  let { countryId } = useParams();
+  const { countryId } = useParams();
   const [data, lang] = useOutletContext();
   const {country} = useFetchSingleCountry(countryId, data, lang)
   const size = useWindowSize().width
   const {list} = useSinglePageList(country, lang)
-  console.log(country);
+
   return (
     <div className='mb-40'>
       <div className='relative isolate after:absolute after:inset-0 after:bg-zinc-950/40 after:backdrop-blur-sm after:backdrop-brightness-125 md:max-h-[80dvh]'>
@@ -20,19 +20,24 @@ const SIngleCountry = () => {
           {country?.name?.common}
         </h1>
 
-        {(country?.coatOfArms?.length !== 0) && 
-        <div className='absolute top-[75%] inset-x-0 z-20 grid items-center justify-center'>
-          <figure className='bgLight dark:dark_bg rounded-md p-0.5 sm:p-3 text-center max-w-[78px] xx:max-w-28 xs:max-w-36 sm:max-w-48 md:max-w-60 lg:max-w-64 xl:max-w-80'
-            title={`${country?.name?.common} ${SinglePageText.coatOfArms[lang]}`}
-          >
-            <img src={country?.coatOfArms?.svg ? country?.coatOfArms?.svg : country?.coatOfArms?.png} alt={`${country?.name?.common} ${SinglePageText.coatOfArms[lang]}`} 
-            className='max-w-[72px] xx:max-w-24 xs:max-w-32 sm:max-w-40 md:max-w-52 lg:max-w-64 xl:max-w-72 aspect-square mx-auto' />
-            <figcaption className='hidden xx:inline-block pt-3 font-semibold sm:text-lg md:text-xl lg:text-2xl text-balance'>{country?.name?.common} {SinglePageText.coatOfArms[lang]}</figcaption>
-          </figure>
-        </div>}
+        {(country?.coatOfArms?.svg || country?.coatOfArms?.png) && 
+          <div className='absolute top-[75%] inset-x-0 z-20 grid items-center justify-center'>
+            <div className='relative isolate'>
+              <img src={country?.flag?.svg ? country?.flag?.svg : country?.flag?.png} alt={country?.flag?.alt} 
+              className='max-w-[72px] xx:max-w-24 xs:max-w-32 sm:max-w-40 md:max-w-52 lg:max-w-64 xl:max-w-72 aspect-square object-fill mx-auto rounded-md'/>
+              <figure className='bgLight dark:bg-gray-900/15 rounded-md sm:p-4 text-center max-w-[78px] xx:max-w-28 xs:max-w-36 sm:max-w-48 md:max-w-60 lg:max-w-64 xl:max-w-80 absolute inset-0 z-10'
+                title={`${country?.name?.common} ${SinglePageText.coatOfArms[lang]}`}
+              >
+                <img src={country?.coatOfArms?.svg ? country?.coatOfArms?.svg : country?.coatOfArms?.png} alt={`${country?.name?.common} ${SinglePageText.coatOfArms[lang]}`} 
+                className='max-w-[72px] xx:max-w-24 xs:max-w-32 sm:max-w-40 md:max-w-52 lg:max-w-64 xl:max-w-72 aspect-square mx-auto object-fill' />
+                <figcaption className='hidden xx:inline-block pt-3 font-poppins capitalize mt-3 font-semibold sm:text-lg md:text-xl lg:text-2xl text-balance'>{country?.name?.common} {SinglePageText.coatOfArms[lang]}</figcaption>
+              </figure>
+            </div>
+          </div>
+        }
       </div>
 
-      <ul className='mt-40 md:mt-80 grid gap-5 max-w-4xl mx-auto px-4 lg:text-lg font-poppins bg-slate-300/300 textLight dark:dark_text font-semibold capitalize'>
+      <ul className={`${country?.coatOfArms?.svg || country?.coatOfArms?.png ? "md:mt-80" : "md:mt-40"} mt-40 grid gap-5 max-w-4xl mx-auto px-4 lg:text-lg font-poppins bg-slate-300/300 textLight dark:dark_text font-semibold capitalize`}>
         {list?.map((countryInfo) => {
           return (
             <li key={countryInfo.id} className='grid grid-cols-2 sm:grid-cols-5 md:grid-cols-6 gap-5 items-center justify-center'>
