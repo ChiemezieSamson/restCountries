@@ -36,3 +36,9 @@ export const searchByData = [
 		},
 	},
 ];
+
+export const placeHolder = {
+	en: "Search...",
+	ko: "검색...",
+	zh: "搜索...",
+};

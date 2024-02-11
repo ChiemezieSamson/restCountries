@@ -78,7 +78,7 @@ const ArrangeMent = ({lang, searchResult, countries, finalResult, handleSetArran
         <li title={toggleButton ? arrangementIcons[2]?.title[lang] : arrangementIcons[1]?.title[lang]}>
           <button 
             id={toggleButton ? arrangementIcons[2]?.name : arrangementIcons[1]?.name} 
-            className={`${clickIcon !== "random"? "bgObject rounded-xl" : ""} line border px-3 rounded-xl hover:lineSoft hover:bgObject transitionEffect relative isolate after:absolute after:inset-0 after:rounded-xl after:border after:border-transparent`}
+            className={`${clickIcon !== "random" ? "bgObject rounded-xl" : ""} line border px-3 rounded-xl hover:lineSoft hover:bgObject transitionEffect relative isolate after:absolute after:inset-0 after:rounded-xl after:border after:border-transparent`}
             onClick={handleSetToggleButton}
             disabled={searchResult[0]}
           >

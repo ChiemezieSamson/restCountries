@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { FaSearch } from 'react-icons/fa'
-import { searchByData } from './data'
+import { placeHolder, searchByData } from './data'
 
 const Search = ({lang, handleSetSearchResult, countries}) => {
   const [searcByOption, setSearcByOption] = useState("name")
@@ -11,15 +11,14 @@ const Search = ({lang, handleSetSearchResult, countries}) => {
   }
 
   const handleInputValues = (event) => {
-    const inputValue = event.target.value
+    const inputValue = event.target.value?.toLowerCase()?.trim()
     
     
     if (inputValue !== "") {// Using a regular expression to check if the value contains only letters
       if (searcByOption === "name") {
        const newList = countries.filter(countries => {
-        const NameWithPositionStart = countries?.name ? countries?.name?.split(" ")[1] : ""
 
-        const foundSearch =  NameWithPositionStart !== undefined ? NameWithPositionStart?.startsWith(inputValue?.toLowerCase()?.trim()) : "" || countries?.name?.startsWith(inputValue?.toLowerCase()?.trim()) || countries?.name === inputValue?.toLowerCase()?.trim()
+        const foundSearch =  countries?.name?.startsWith(inputValue) || countries?.name === inputValue || countries?.name?.split(" ")[1]?.startsWith(inputValue)
        
         return foundSearch
       })
@@ -27,17 +26,17 @@ const Search = ({lang, handleSetSearchResult, countries}) => {
       }
 
       if(searcByOption === "capital") {
-        const newList = countries.filter(countries => countries?.capital?.startsWith(inputValue?.toLowerCase()?.trim()) || countries?.capital === inputValue?.toLowerCase()?.trim())
+        const newList = countries.filter(countries => countries?.capital?.startsWith(inputValue) || countries?.capital === inputValue)
         handleSetSearchResult(() => newList);
       }
 
       if(searcByOption === "continets") {
-        const newList = countries.filter(countries => countries?.continents?.startsWith(inputValue?.toLowerCase()?.trim()) || countries?.continents === inputValue?.toLowerCase()?.trim())
+        const newList = countries.filter(countries => countries?.continents?.startsWith(inputValue) || countries?.continents === inputValue)
         handleSetSearchResult(() => newList);
       }
 
       if(searcByOption === "language") {
-        const newList = countries.filter(countries => countries?.language?.startsWith(inputValue?.toLowerCase()?.trim()) || countries?.language === inputValue?.toLowerCase()?.trim())
+        const newList = countries.filter(countries => countries?.language?.startsWith(inputValue) || countries?.language === inputValue)
         handleSetSearchResult(() => newList);
       }
     } else {
@@ -48,7 +47,7 @@ const Search = ({lang, handleSetSearchResult, countries}) => {
   return (
     <form id="search-form" role="search" className='mx-2 px-2' onSubmit={(e) => e.preventDefault()}>
       <label htmlFor="Search" className='relative '>
-        <input type="search" name="Search" id="Search" placeholder='Search...' aria-label="Search" onChange={handleInputValues}/>
+        <input type="search" name="Search" id="Search" placeholder={placeHolder[lang]} aria-label="Search" onChange={handleInputValues}/>
         <span className='absolute left-1 inset-y-0 grid items-center justify-center'>
           <FaSearch className='inline-block text-lg cursor-pointer'/>
         </span>
