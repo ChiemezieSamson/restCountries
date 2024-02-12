@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useOutletContext } from 'react-router-dom';
 import { useApiFetchingComponent } from '../../sharedComponent/sharedComponent';
-import { useFetchNameAndPopulation } from './data';
+import { Heading, useFetchNameAndPopulation } from './data';
 import PopulationSearch from '../PopulationSearch/PopulationSearch';
 import PopulationSelectionButton from '../PopulationSelectionButton/PopulationSelectionButton';
 import PopulationBarCharts from '../PopulationBarCharts/PopulationBarCharts';
@@ -53,6 +53,14 @@ const PopulationIndex = () => {
   
   return (
     <div className='pt-32'>
+      <div className='mb-20'>
+        <h1 className='headTitle1'>
+          {Heading.title[lang]}
+        </h1>
+        <h4 className='headSubTitle1'>
+          {Heading.sub_title[lang]}
+        </h4>
+      </div>
       <PopulationSearch 
         lang={lang}
         handleSetSearchResult={handleSetSearchResult}

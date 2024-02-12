@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import Navigation from './Navigation/Navigation';
-import { Outlet } from 'react-router-dom';
+import { Outlet, ScrollRestoration } from 'react-router-dom';
 
-const Home = ({login}) => {
+const Home = ({login, login2}) => {
   const [isLanguage, setIsLanguage] = useState("ko");
   const languageMode = localStorage.getItem("Language");
 
@@ -24,9 +24,22 @@ const Home = ({login}) => {
 
       <main className='max-w-7xl mx-auto'>
         <div className=''>
-          <Outlet context={[isLanguage, login, handleSetLanguage]} />
+          <Outlet context={[isLanguage, login, login2]} />
         </div>
-      </main>      
+
+
+      {/* === scroll back to lasts position on page refresh === */}
+      <ScrollRestoration 
+        getKey={(location, matches) => {
+          const paths = ["/", "/regions/"];
+          return paths.includes(location.pathname)
+            ? // home and notifications restore by pathname
+              location.pathname
+            : // everything else by location like the browser
+              location.key;
+        }}
+        />   
+      </main>   
     </div>
   )
 }

@@ -39,9 +39,11 @@ const List = ({countries, count, size, buttonClicked}) => {
 
               <Link to={`/countries/${country?.id}`} 
                 className='lg:text-lg font-poppins grid items-center justify-center bg-slate-300/300 textLight dark:dark_text font-semibold dark:bgLight p-2 rounded-xl shadow-md dark:shadow-slate-50/50 
-                shadow-slate-800/50 uppercase tracking-widest transitionEffect backdrop-blur-[1px] dark:backdrop-blur-0'>
-                {country?.name === undefined ? country?.id?.slice(0, 10) : country?.name?.slice(0, 10)}
-                {country?.name?.length > 10 && "..."}
+                shadow-slate-800/50 uppercase tracking-widest transitionEffect dark:group-hover:textShawdo'>
+                  <span className='group-hover:backdrop-blur-[5px] dark:group-hover:backdrop-blur-[5px]'>
+                    {country?.name === undefined ? country?.id?.slice(0, 10) : country?.name?.slice(0, 10)}
+                    {country?.name?.length > 10 && "..."}
+                  </span>
               </Link>
             </li>
           )

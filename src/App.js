@@ -13,7 +13,14 @@ import PopulationIndex from "./Components/population/populationIndex/populationI
 const App = createBrowserRouter([
 	{
 		path: "/",
-		element: <Home login={"https://restcountries.com/v3.1/all"} />,
+		element: (
+			<Home
+				login={"https://restcountries.com/v3.1/all"}
+				login2={
+					"https://raw.githubusercontent.com/ChiemezieSamson/world-countries-api/master/translatedData..json"
+				}
+			/>
+		),
 		errorElement: <div>Not Found</div>,
 		children: [
 			{

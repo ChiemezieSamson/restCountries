@@ -9,7 +9,7 @@ import Detailed from '../Detailed/Detailed';
 import TotheTop from '../BackToTop/BacktoTop';
 
 const CountiersIndex = () => {
-  const [,lang, width, countries, count, showCount, handleSetCount, handleSetShowCount, handleSetButtonClicked, buttonClicked, handleSetSearchResult,
+  const [,lang,, width, countries, count, showCount, handleSetCount, handleSetShowCount, handleSetButtonClicked, buttonClicked, handleSetSearchResult,
     handleSetArrangeResult, searchResult, finalResult] = useOutletContext();
   return (
     <div className='pt-14'>

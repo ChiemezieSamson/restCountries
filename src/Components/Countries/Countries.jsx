@@ -2,14 +2,15 @@ import React, { useEffect, useState } from 'react'
 import { Outlet, useOutletContext } from 'react-router-dom';
 import { useWindowSize } from '@uidotdev/usehooks';
 import { useDetailedCountriesName } from './SharedComponent/SharedComponent';
-import { useApiFetchingComponent } from '../sharedComponent/sharedComponent';
+import { useApiFetchingComponent, useApiFetchingTranslatedData } from '../sharedComponent/sharedComponent';
 
 
 const Countries = () => {
-  const [lang, login] = useOutletContext();
+  const [lang, login, login2] = useOutletContext();
   const [language, setLanguage] = useState("kor")
   const { data, loading, error } = useApiFetchingComponent(login)
-  const {countries} = useDetailedCountriesName(data, lang, language) // A function fetching just the names and images of each country 
+  const { TranslatedData, Tloading, Terror } = useApiFetchingTranslatedData(login2)
+  const {countries} = useDetailedCountriesName(data, TranslatedData, lang, language) // A function fetching just the names and images of each country 
   const [count, setCount] = useState(0)
   const [buttonClicked, setButtonClicked] = useState("grid")
   const [showCount, setShowCount] = useState(false)
@@ -19,8 +20,8 @@ const Countries = () => {
   const size = useWindowSize();
   const width = size.width
 
-  // if (data) {
-  //   console.log(data[0]);
+  // if (TranslatedData) {
+  //   console.log(TranslatedData[0]);
   // } 
   
 
@@ -94,7 +95,7 @@ const Countries = () => {
   return (
     <div className='pt-16'>
       <div className=''>
-        <Outlet context={[data, lang, width, countries, count, showCount, handleSetCount, handleSetShowCount, handleSetButtonClicked, buttonClicked, handleSetSearchResult,
+        <Outlet context={[data, lang, TranslatedData, width, countries, count, showCount, handleSetCount, handleSetShowCount, handleSetButtonClicked, buttonClicked, handleSetSearchResult,
     handleSetArrangeResult, searchResult, finalResult]}/>
       </div>
     </div>

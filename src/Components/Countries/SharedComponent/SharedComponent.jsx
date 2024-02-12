@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import TanslatedcountriesData from "./../../../translatedData..json";
 
-export const useDetailedCountriesName = (data, lang, language) => {
+export const useDetailedCountriesName = (data, TranslatedData, lang, language) => {
 	const [countries, setCountries] = useState([]);
 	// For each country get its Korean "ko" or Chinese name accordly
 	useEffect(() => {
-		if (data) {
+		if (data && TranslatedData) {
+			const TanslatedcountriesData = TranslatedData
 			// make sure the array of countries is present
 			let translateID = [];
 
@@ -88,7 +88,7 @@ export const useDetailedCountriesName = (data, lang, language) => {
 
 			setCountries(() => allCountries);
 		}
-	}, [data, language, lang]);
+	}, [data, TranslatedData, language, lang]);
 
 	return { countries };
 };

@@ -12,10 +12,10 @@ const SingleRegion = () => {
 
   return (
     <div className='py-44 mb-20'>
-      <h1 className='text-center capitalize text-balance font-poppins text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-semibold mt-0 px-2'>
+      <h1 className='headTitle1'>
         {lang === "en" ? `${singleRegionData.title[lang]} ${RegionName}` : `${RegionName}${singleRegionData.title[lang]}`}
       </h1>
-      <h4 className='px-2 py-1 my-2 font-semibold sm:text-lg md:text-xl lg:text-2xl text-center text-balance'><strong>{total[lang]} :</strong> {countries ? countries.length : 0}</h4>
+      <h4 className='headSubTitle1'><strong>{total[lang]} :</strong> {countries ? countries.length : 0}</h4>
 
       <ul className='mt-20 px-4 gap-4 grid xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5'>
         {countries?.map((country, index) => {				
@@ -32,9 +32,11 @@ const SingleRegion = () => {
 
               <Link to={`/countries/${country?.id}`} 
                 className='lg:text-lg font-poppins grid items-center justify-center bg-slate-300/300 textLight dark:dark_text font-semibold dark:bgLight p-2 rounded-xl shadow-md dark:shadow-slate-50/50 
-                shadow-slate-800/50 uppercase tracking-widest transitionEffect backdrop-blur-[1px] dark:backdrop-blur-0'>
-                {country?.name[lang] === undefined ? country?.id?.slice(0, 10) : country?.name[lang]?.slice(0, 10)}
-                {country?.name[lang]?.length > 10 && "..."}
+                shadow-slate-800/50 uppercase tracking-widest transitionEffect dark:group-hover:textShawdo'>
+                  <span className='group-hover:backdrop-blur-[5px] dark:group-hover:backdrop-blur-[5px]'>
+                    {country?.name[lang] === undefined ? country?.id?.slice(0, 10) : country?.name[lang]?.slice(0, 10)}
+                    {country?.name[lang]?.length > 10 && "..."}
+                  </span>
               </Link>
             </li>
           )

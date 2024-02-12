@@ -29,3 +29,17 @@ export const useFetchNameAndPopulation = (data) => {
 
   return { countries }
 }
+
+
+export const Heading = {
+  title: {
+    en: "World Population by Country",
+    zh: "按国家划分的世界人口",
+    ko: "세계 국가별 인구",
+  },
+  sub_title: {
+    en: "Unveiling the World's Diversity: Country Names, Populations, and Percentages",
+    zh: "揭示世界多样性：国家名称，人口和百分比 ",
+    ko: "세계 다양성의 발표: 국가 이름, 인구 및 백분율",
+  },
+}

@@ -45,6 +45,40 @@ export const useApiFetchingComponent = (login) => {
 	return { data, loading, error };
 };
 
+export const useApiFetchingTranslatedData = (login2) => {
+	const [TranslatedData, setTranslatedData] = useState(null);
+	const [Tloading, setTLoading] = useState(true);
+	const [Terror, setTError] = useState(null);
+
+	useEffect(() => {
+		const fetchData = async () => {
+			if (!login2) return;
+			try {
+				// Set loading to true when starting the fetch
+				setTLoading(true);
+
+				// Fetch data from the API
+				const response = await fetch(login2);
+				const result = await response.json();
+
+				// Set the fetched data and loading to false
+				setTranslatedData(result);
+				setTLoading(false);
+			} catch (error) {
+				console.error("Error fetching data:", error);
+				setTError(() => error);
+				// Handle error, set loading to false
+				setTLoading(false);
+			}
+		};
+
+		// Call the fetchData function
+		fetchData();
+	}, [login2]);
+
+	return { TranslatedData, Tloading, Terror };
+};
+
 export const worldRegionsData = [
 	{
 		id: 0,

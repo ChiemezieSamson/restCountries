@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import TanslatedcountryData from "../../../translatedData..json";
 
-export const useFetchSingleCountry = (countryId, data, lang) => {
+export const useFetchSingleCountry = (countryId, data, lang, TranslatedData) => {
 	const [country, setCountry] = useState({});
 
 	useEffect(() => {
-		if (data) {
+		if (data && TranslatedData) {
+			const TanslatedcountryData = TranslatedData
 			const apiCountry = data.find((foundCountry) => foundCountry?.name?.common?.toLowerCase().trim() === countryId);
 			const TranslateCountry = TanslatedcountryData.find((foundCountry) => foundCountry?.country.toLowerCase().trim() === countryId);
 			let newList;
@@ -91,7 +91,7 @@ export const useFetchSingleCountry = (countryId, data, lang) => {
 			
 			setCountry(() => newList);
 		}
-	}, [data, countryId, lang]);
+	}, [data, countryId, lang, TranslatedData]);
 
 	return { country };
 };

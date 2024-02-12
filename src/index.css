@@ -47,6 +47,14 @@
 }
 
 @layer utilities{
+  .headTitle1 {
+    @apply text-center capitalize text-balance font-poppins text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-semibold mt-0 px-2
+  }
+
+  .headSubTitle1 {
+    @apply px-2 py-1 my-2 font-semibold sm:text-lg md:text-xl lg:text-2xl text-center text-balance
+  }
+
   .dark_bg {
    @apply bg-slate-900
   }
@@ -118,6 +126,10 @@
     -moz-transform: perspective(16px) rotateX(10deg) scale(0.9, 0.5);
     -ms-transform: perspective(16px) rotateX(10deg) scale(0.9, 0.5);
     -o-transform: perspective(16px) rotateX(10deg) scale(0.9, 0.5);
+}
+
+.textShawdo {
+  text-shadow: 2px 2px 0px #000000;
 }
 
 .BTop {

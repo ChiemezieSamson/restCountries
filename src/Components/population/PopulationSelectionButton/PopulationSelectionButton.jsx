@@ -44,8 +44,10 @@ const PopulationSelectionButton = ({lang, handleSetArrangeResult, countries, sea
       // making sure users are returned to their last arrangment before moving to random
       if (sortLastArrangment === "highest") {
         handleSetArrangeResult(() => sortedArrayDescending)
+        return
       } else {
         handleSetArrangeResult(() => sortedArrayAscending)
+        return
       }
     }
   }

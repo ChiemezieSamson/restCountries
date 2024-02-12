@@ -7,8 +7,8 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 
 const SIngleCountry = () => {
   const { countryId } = useParams();
-  const [data, lang] = useOutletContext();
-  const {country} = useFetchSingleCountry(countryId, data, lang)
+  const [data, lang, TranslatedData] = useOutletContext();
+  const {country} = useFetchSingleCountry(countryId, data, lang, TranslatedData)
   const size = useWindowSize().width
   const {list} = useSinglePageList(country, lang)
 
@@ -46,8 +46,8 @@ const SIngleCountry = () => {
                   {countryInfo.left} {size > "640" ? ":" : ""} 
                 </span>
 
-              <span className='md:col-span-4 sm:col-span-3 col-span-2 lg:text-lg dark:bgLight p-2 shadow-md dark:shadow-slate-50/50 
-                shadow-slate-800/50 tracking-widest transitionEffect backdrop-blur-[1px] dark:backdrop-blur-0'>
+              <span className={`md:col-span-4 sm:col-span-3 col-span-2 lg:text-lg dark:bgLight p-2 shadow-md dark:shadow-slate-50/50 
+                shadow-slate-800/50 tracking-widest transitionEffect backdrop-blur-[1px] dark:backdrop-blur-0 ${countryInfo.right === "" || countryInfo.right === undefined ? "hidden" : "block"}`}>
                   {countryInfo.right}
               </span>
             </li>

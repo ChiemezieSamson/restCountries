@@ -21,7 +21,7 @@ const Detailed = ({lang, countries}) => {
                   className='aspect-video rounded-md border border-solid border-slate-400/50 dark:border-0'
                 />
               
-                <div className='mt-3 cu'>
+                <div className='mt-3'>
                   <h2 className='lg:text-[22px] leading-7 text-lg text-center my-0 py-0 font-poppins'>
                     {country?.name === undefined ? country?.id?.slice(0, 14) : country?.name?.slice(0, 14)}
                     {country?.name?.length > 14  && "..."}

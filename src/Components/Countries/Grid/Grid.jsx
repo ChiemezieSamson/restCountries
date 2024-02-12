@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 
 const Grid = ({countries, count, size, buttonClicked}) => {
   
-
   // CSS style helping in the increase and decrease of the list when the window size is greater than 1280
   useEffect(() => {
     const ul = document.querySelector(".list") // get the ul

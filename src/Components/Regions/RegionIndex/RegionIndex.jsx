@@ -7,8 +7,8 @@ const RegionIndex = () => {
   const [lang] = useOutletContext();
   return (
     <div className='py-44 mb-20'>
-      <h1 className='text-center capitalize text-balance font-poppins text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-semibold mt-0 px-2'>{worldRegions.title[lang]}</h1>
-      <h4 className='px-2 py-1 my-2 font-semibold sm:text-lg md:text-xl lg:text-2xl text-center text-balance'>{worldRegions.sub_title[lang]}</h4>
+      <h1 className='headTitle1'>{worldRegions.title[lang]}</h1>
+      <h4 className='headSubTitle1'>{worldRegions.sub_title[lang]}</h4>
        
        <ul className='grid sm:grid-cols-2 lg:grid-cols-3 mt-40 gap-8 px-4'>
         {worldRegionsData.map(region => {
