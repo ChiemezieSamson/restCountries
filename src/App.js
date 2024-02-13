@@ -9,18 +9,20 @@ import RegionIndex from "./Components/Regions/RegionIndex/RegionIndex";
 import SingleRegion from "./Components/Regions/SingleRegion/SingleRegion";
 import Population from "./Components/population/population";
 import PopulationIndex from "./Components/population/populationIndex/populationIndex";
+import Currency from "./Components/Currency/Currency";
+import CurrencyInedx from "./Components/Currency/CurrencyInedx/CurrencyInedx";
+import SupportedCodes from "./Components/Currency/SupportedCodes/SupportedCodes";
+
+const apiUrl1 = process.env.REACT_APP_RESTCOUNTRIES_API_URL;
+const apiUrl2 = process.env.REACT_APP_TRANSLATED_RESTCOUNTRIES_API_URL;
+const exchangeRateApiKey = process.env.REACT_APP_EXCHANGERATE_API_KEY;
+const exchangeRateApiUrl = process.env.REACT_APP_EXCHANGERATE_API_URL;
+const exchangeRateApiCode = process.env.REACT_APP_EXCHANGERATE_API_CODE;
 
 const App = createBrowserRouter([
 	{
 		path: "/",
-		element: (
-			<Home
-				login={"https://restcountries.com/v3.1/all"}
-				login2={
-					"https://raw.githubusercontent.com/ChiemezieSamson/world-countries-api/master/translatedData..json"
-				}
-			/>
-		),
+		element: <Home login={apiUrl1} login2={apiUrl2} />,
 		errorElement: <div>Not Found</div>,
 		children: [
 			{
@@ -70,6 +72,29 @@ const App = createBrowserRouter([
 					{
 						index: true,
 						element: <PopulationIndex />,
+						errorElement: <div>Not Found</div>,
+					},
+				],
+			},
+			{
+				path: "currency",
+				element: (
+					<Currency
+						loginUrl={exchangeRateApiUrl}
+						loginKey={exchangeRateApiKey}
+						APiCode={exchangeRateApiCode}
+					/>
+				),
+				errorElement: <div>Not Found</div>,
+				children: [
+					{
+						index: true,
+						element: <CurrencyInedx />,
+						errorElement: <div>Not Found</div>,
+					},
+					{
+						path: "/currency/supported_code",
+						element: <SupportedCodes />,
 						errorElement: <div>Not Found</div>,
 					},
 				],
