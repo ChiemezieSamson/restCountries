@@ -1,13 +1,16 @@
 import React from 'react'
 import { useOutletContext } from 'react-router-dom';
-import { useApiFetchingSupportCode } from './data';
-import { useApiFetchingComponent } from '../../sharedComponent/sharedComponent';
+import { useApiFetchingSupportCode, useFetchCountryAndCurrencyCode } from './data';
+import { useApiFetchingComponent, useApiFetchingTranslatedData } from '../../sharedComponent/sharedComponent';
 
 const SupportedCodes = () => {
-  const [lang, login, loginUrl, loginKey, APiCode] = useOutletContext();
+  const [lang, login, login2, loginUrl, loginKey, APiCode] = useOutletContext();
   const { data, loading, error } = useApiFetchingComponent(login)
+  const { TranslatedData, Tloading, Terror } = useApiFetchingTranslatedData(login2)
   const {code, codeLoading, codeError} = useApiFetchingSupportCode(APiCode, loginKey)
-  console.log(code?.result === "success" ? code.supported_codes : "");
+  const { countryCurrencyCode } = useFetchCountryAndCurrencyCode(data, TranslatedData, code)
+  
+  // console.log(countryCurrencyCode);
   return (
     <div>
       
