@@ -185,7 +185,7 @@ export const SinglePageText = {
 	},
 	symbol: {
 		en: "currency symbol",
-		ko: "통화 기호",
+		ko: "통화 심볼",
 		zh: "货币符号",
 	},
 	UNMember: {
