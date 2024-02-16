@@ -1,19 +1,50 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useOutletContext } from 'react-router-dom';
 import { Heading, useApiFetchingSupportCode, useFetchCountryAndCurrencyCode } from './data';
 import { useApiFetchingComponent, useApiFetchingTranslatedData } from '../../sharedComponent/sharedComponent';
+import Search from './Search/Search';
+import ToggleButton from './ToggleButton/ToggleButton';
+import { ascendingArrangement } from './ToggleButton/data';
+import SupportList from './SupportList/SupportList';
 
 const SupportedCodes = () => {
-  const [lang, login, login2, loginUrl, loginKey, APiCode] = useOutletContext();
+  const [lang, login, login2, loginKey, APiCode] = useOutletContext();
   const { data, loading, error } = useApiFetchingComponent(login)
   const { TranslatedData, Tloading, Terror } = useApiFetchingTranslatedData(login2)
   const {code, codeLoading, codeError} = useApiFetchingSupportCode(APiCode, loginKey)
   const { countryCurrencyCode } = useFetchCountryAndCurrencyCode(data, TranslatedData, code)
+  const { ascendingByCountry } = ascendingArrangement(countryCurrencyCode, lang)
+  const [searchResult, setSearchResult] = useState([])
+  const [arrangeResult, setArrangeResult] = useState([])
+  const [finalResult, setFinalResult] = useState([])
 
-  // console.log(countryCurrencyCode);
-  
+  const handleSetSearchResult = (array) => {
+    setSearchResult(array)
+  }
+
+  const handleSetArrangeResult = (searchArray) => {
+    setArrangeResult(searchArray)
+  }
+
+  // console.log(arrangeResult);
+
+  useEffect(() => {
+    if(searchResult[0]) {
+      setFinalResult(() => [...searchResult].sort((a, b) =>  a.name[lang].toLowerCase().localeCompare(b.name[lang], lang)))
+      return
+    }
+
+    if(arrangeResult[0]) {
+      setFinalResult(() => arrangeResult)
+      return
+    }
+
+    setFinalResult(() => [...countryCurrencyCode].sort((a, b) =>  a.name[lang].toLowerCase().localeCompare(b.name[lang], lang)))
+    return
+  }, [arrangeResult, searchResult, lang, countryCurrencyCode])
+
   return (
-    <div className='pt-32'>
+    <div className='pt-32 px-2 mx-2'>
       <div className='mb-20'>
         <h1 className='headTitle1'>
           {Heading.title[lang]}
@@ -23,17 +54,17 @@ const SupportedCodes = () => {
         </h4>
       </div>
 
-      <div>
+      <div className='overflow-x-scroll touch-pan-x xs:overflow-x-auto'>
         <h2 className='py-3 mb-2 font-semibold sm:text-lg md:text-xl lg:text-2xl text-balance font-poppins underline'>{Heading?.unsupported_currencies[lang]}</h2>
         <p className='text-[17px] md:text-lg lg:text-xl text-balance font-medium'>{Heading.text[lang]}</p>
 
-        <div className='mt-8 max-w-xl'>
-          <div className='grid grid-cols-3 gap-3 font-semibold text-[17px] md:text-lg text-balance font-poppins'>
+        <div className='mt-8 max-w-xl grid grid-cols-2 gap-4 min-w-[340px] xs:block xs:min-w-0'>
+          <div className='grid xs:grid-cols-3 gap-3 font-semibold text-[17px] md:text-lg text-balance font-poppins'>
             <span>{Heading.currency_code[lang]}</span>
             <span>{Heading.currency_name[lang]}</span>
             <span>{Heading.country[lang]}</span>
           </div>
-          <div className='grid grid-cols-3 gap-3 mt-3 capitalize'>
+          <div className='grid xs:grid-cols-3 gap-3 xs:mt-3 capitalize '>
             <span>{Heading.north_korea.currency_symbol}</span>
             <span>{Heading.north_korea.currency_name[lang]}</span>
             <span>{Heading.north_korea.name[lang]}</span>
@@ -41,6 +72,16 @@ const SupportedCodes = () => {
         </div>
       </div>
       
+      <Search countries={ascendingByCountry} lang={lang} handleSetSearchResult={handleSetSearchResult}/>
+      <ToggleButton 
+        searchResult={searchResult}  
+        lang={lang} 
+        countries={ascendingByCountry} 
+        handleSetArrangeResult={handleSetArrangeResult}
+        countryCurrencyCode={countryCurrencyCode}
+      />
+
+      <SupportList lang={lang} finalResult={finalResult}/>
     </div>
   )
 }

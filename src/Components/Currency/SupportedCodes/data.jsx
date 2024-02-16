@@ -68,7 +68,7 @@ export const Heading = {
     zh: "货币名称"
   },
   currency_symbol: {
-    en: "Currency Name",
+    en: "Currency Symbol",
     ko: "통화 심볼",
     zh: "货币符号"
   },

@@ -5,9 +5,9 @@ import { populationDataHead } from './data'
 const PopulationBarCharts = ({finalResult, lang}) => {
  
   return (
-    <div className='my-20 px-2 mx-2 overflow-x-scroll touch-pan-x xs:overscroll-x-none'>
-      <ul className='max-w-6xl min-w-[332px] mx-auto xs:text-center'>
-        <li className='hidden xs:grid xs:grid-cols-3 gap-x-3 xs:text-lg lg:text-xl font-poppins font-bold mb-5 capitalize'>
+    <div className='my-20 px-2 mx-2 overflow-x-scroll touch-pan-x sm:overflow-x-auto'>
+      <ul className='max-w-6xl min-w-[332px] mx-auto sm:text-center'>
+        <li className='hidden sm:grid sm:grid-cols-3 gap-x-3 sm:text-lg lg:text-xl font-poppins font-bold mb-5 capitalize'>
           <span className='block text-left'>{populationDataHead.country[lang]}</span>
           <span>{populationDataHead.population[lang]}</span>
           <span>(%){populationDataHead.population[lang]}</span>
@@ -21,11 +21,12 @@ const PopulationBarCharts = ({finalResult, lang}) => {
             shadow-slate-800/50 tracking-widest transitionEffect backdrop-blur-[1px] dark:backdrop-blur-0' title={country?.name[lang]?.length > 13 ? country?.name[lang] : ""}>
               <div className={`absolute inset-0 -z-10 dark:bg-green-800 bg-amber-500 h-full`} style={{width: `${backgroundWidth}%`}}></div>
               <Link to={`/countries/${country?.id}`} 
-                className='grid xs:grid-cols-3 gap-x-3 mb-4 font-poppins font-semibold capitalize text-sm xs:text-base lg:text-lg xs:items-center xs:justify-center p-2 rounded-xl relative isolate'
+                className='grid sm:grid-cols-3 gap-x-3 mb-4 font-poppins font-semibold capitalize text-sm sm:text-base lg:text-lg sm:items-center sm:justify-center p-2 rounded-xl relative isolate
+                group-hover:backdrop-blur-[5px] dark:group-hover:backdrop-blur-[5px] dark:group-hover:textShawdo'
               >
-                <span className='grid grid-cols-2 xs:inline-block gap-x-4'><span className='xs:hidden'>{populationDataHead.country[lang]}:</span> <span className='block text-left'>{country?.name[lang]?.slice(0, 13)}{country?.name[lang]?.length > 13 ? "..." : ""}</span></span>
-                <span className='grid grid-cols-2 xs:inline-block gap-x-4'><span className='xs:hidden'>{populationDataHead.population[lang]}:</span> <span>{parseInt(country?.population, 10).toLocaleString()}</span></span>
-                <span className='grid grid-cols-2 xs:inline-block gap-x-4'><span className='xs:hidden'>(%){populationDataHead.population[lang]}:</span> <span>{country?.percentage}%</span></span>
+                <span className='grid grid-cols-2 sm:inline-block gap-x-4'><span className='sm:hidden'>{populationDataHead.country[lang]}:</span> <span className='block text-left'>{country?.name[lang]?.slice(0, 13)}{country?.name[lang]?.length > 13 ? "..." : ""}</span></span>
+                <span className='grid grid-cols-2 sm:inline-block gap-x-4'><span className='sm:hidden'>{populationDataHead.population[lang]}:</span> <span>{parseInt(country?.population, 10).toLocaleString()}</span></span>
+                <span className='grid grid-cols-2 sm:inline-block gap-x-4'><span className='sm:hidden'>(%){populationDataHead.population[lang]}:</span> <span>{country?.percentage}%</span></span>
               </Link>
             </li>
           )
