@@ -1,5 +1,5 @@
 import React from 'react'
-import { Heading } from './data'
+import { ExchangeRatePairConversionCurrencyImage, Heading, StandardPairConversionCurrencyImage } from './data'
 import { Link, useOutletContext } from 'react-router-dom';
 import CurrencyBg from "./../../asset/images/currency-bg.jpg"
 import { useApiFetchingComponent } from '../../sharedComponent/sharedComponent';
@@ -44,6 +44,23 @@ const CurrencyInedx = () => {
             </Link>
           </p>
         </div>
+      </div>
+
+      <div className='py-52'>
+        <h2 className='headTitle1'>{Heading.ExchangeRatePairConversion.title[lang]}</h2>
+        <h4 className='headSubTitle1'>{Heading.ExchangeRatePairConversion.sub_title[lang]}</h4>
+        <ul className='grid sm:grid-cols-2 gap-4 mt-20 px-5'>
+          {ExchangeRatePairConversionCurrencyImage.map(image => {
+            return (
+              <li key={image.id}>
+                <Link to={image.url} className='relative isolate after:absolute after:inset-0 after:z-10 after:bg-black/30 after:rounded-3xl'>
+                  <img src={image.image} alt={image.name[lang]} className='max-h-[400px] aspect-video rounded-3xl'/>
+                  <h4 className='px-2 py-1 my-2 font-semibold xs:text-lg sm:text-xl md:text-2xl lg:text-3xl absolute left-2 bottom-4 text-white z-20 capitalize font-poppins'>{image.name[lang]}</h4>
+                </Link>
+              </li>
+            )
+          })}
+        </ul>
       </div>
     </div>
   )
