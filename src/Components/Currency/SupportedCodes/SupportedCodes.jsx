@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useOutletContext } from 'react-router-dom';
-import { Heading, useApiFetchingSupportCode, useFetchCountryAndCurrencyCode } from './data';
-import { useApiFetchingComponent, useApiFetchingTranslatedData } from '../../sharedComponent/sharedComponent';
+import { Heading } from './data';
+import { useFetchCountryAndCurrencyCode } from '../../sharedComponent/sharedComponent';
 import Search from './Search/Search';
 import ToggleButton from './ToggleButton/ToggleButton';
 import { ascendingArrangement } from './ToggleButton/data';
@@ -9,10 +9,7 @@ import SupportList from './SupportList/SupportList';
 
 const SupportedCodes = () => {
   const [lang, login, login2, loginKey, APiCode] = useOutletContext();
-  const { data, loading, error } = useApiFetchingComponent(login)
-  const { TranslatedData, Tloading, Terror } = useApiFetchingTranslatedData(login2)
-  const {code, codeLoading, codeError} = useApiFetchingSupportCode(APiCode, loginKey)
-  const { countryCurrencyCode } = useFetchCountryAndCurrencyCode(data, TranslatedData, code)
+  const { countryCurrencyCode, Error, Loading } = useFetchCountryAndCurrencyCode(login, login2, loginKey, APiCode)
   const { ascendingByCountry } = ascendingArrangement(countryCurrencyCode, lang)
   const [searchResult, setSearchResult] = useState([])
   const [arrangeResult, setArrangeResult] = useState([])

@@ -1,13 +1,11 @@
 import React from 'react'
-import { ExchangeRatePairConversionCurrencyImage, Heading, StandardPairConversionCurrencyImage } from './data'
+import { ExchangeRatePairConversionCurrencyImage, Heading } from './data'
 import { Link, useOutletContext } from 'react-router-dom';
 import CurrencyBg from "./../../asset/images/currency-bg.jpg"
-import { useApiFetchingComponent } from '../../sharedComponent/sharedComponent';
 import { FaLongArrowAltRight } from 'react-icons/fa';
 
 const CurrencyInedx = () => {
-  const [lang, login] = useOutletContext();
-  const { data, loading, error } = useApiFetchingComponent(login)
+  const [lang] = useOutletContext();
 
   return (
     <div className='pt-32 px-2 mx-2'>
