@@ -6,6 +6,7 @@ import { useOutletContext } from 'react-router-dom';
 const ExchangeRateCountryCurrency = ({}) => {
   const [lang, loginKey, loginUrl, code, countryId, countryCurrencyCode] = useOutletContext();
   const { countriesRate, exchangerate, exchangerateLoading, exchangerateError } = useFetchCountryWithExchangeRate(countryCurrencyCode, countryId, loginUrl, loginKey, code)
+  console.log(countriesRate, exchangerate, lang);
  
   return (
     <div>
