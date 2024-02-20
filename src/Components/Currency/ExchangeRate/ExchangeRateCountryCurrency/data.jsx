@@ -41,9 +41,23 @@ export const useApiFetchingExchangeRate = (loginUrl, loginKey, code) => {
 };
 
 
-export const useFetchCountryWithExchangeRate = (countryCurrencyCode, countryId, loginUrl, loginKey, code) => {
+export const useFetchCountryWithExchangeRate = (countryCurrencyCode, countryId, loginUrl, loginKey, code, lang) => {
   const { exchangerate, exchangerateLoading, exchangerateError } = useApiFetchingExchangeRate(loginUrl, loginKey, code)
   const [countriesRate, setCountriesRate] = useState([])
+	const lastUpdatedateString  = exchangerate ? exchangerate?.time_last_update_utc : ""
+	const nextUpdatedateString  = exchangerate ? exchangerate?.time_next_update_utc : ""
+	const lastUpdate = new Date(lastUpdatedateString).toLocaleString(lang, {
+		weekday: 'long',
+		day: 'numeric',
+		month: 'long',
+		year: 'numeric',
+	});
+	const nextUpdate = new Date(nextUpdatedateString).toLocaleString(lang, {
+		weekday: 'long',
+		day: 'numeric',
+		month: 'long',
+		year: 'numeric',
+	});
 
   useEffect(() => {
     let newList
@@ -61,11 +75,38 @@ export const useFetchCountryWithExchangeRate = (countryCurrencyCode, countryId, 
         return newList
       }))
 
-
-      setCountriesRate(() => newCountriesList)
+      setCountriesRate(() => [...newCountriesList].sort((a, b) =>  a.name[lang].toLowerCase().localeCompare(b.name[lang], lang)))
     }
 
-  }, [exchangerate, countryCurrencyCode, countryId])
+  }, [exchangerate, countryCurrencyCode, countryId, lang])
 
-  return { countriesRate, exchangerate, exchangerateLoading, exchangerateError }
+  return { countriesRate, lastUpdate, nextUpdate, exchangerateLoading, exchangerateError }
+}
+
+export const NameTags = {
+	currency_code: {
+    en: "Currency Code",
+    ko: "통화 코드",
+    zh: "货币代码"
+  },
+  currency_name: {
+    en: "Currency Name",
+    ko: "통화 이름",
+    zh: "货币名称"
+  },
+  currency_symbol: {
+    en: "Currency Symbol",
+    ko: "통화 심볼",
+    zh: "货币符号"
+  },
+	last_update: {
+		en: "Last Update",
+    ko: "최종 업데이트",
+    zh: "上次更新"
+	}, 
+	next_update: {
+		en: "Next Update",
+    ko: "다음 업데이트",
+    zh: "下次更新"
+	}
 }

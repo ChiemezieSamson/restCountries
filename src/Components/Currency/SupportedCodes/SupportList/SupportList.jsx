@@ -1,10 +1,10 @@
 import React from 'react'
 import { Heading } from '../data'
 import { Link } from 'react-router-dom'
+import { useFiliterCountryWithNoCureencyName } from '../../../sharedComponent/sharedComponent'
 
 const SupportList = ({finalResult, lang}) => {
-
-  const filiterCountryWithNoCureencyName = finalResult.filter(country => country?.currency_code !== "")
+  const { filiteredCountry } = useFiliterCountryWithNoCureencyName(finalResult)
   return (
     <div className='my-20 px-2 mx-2 overflow-x-scroll touch-pan-x sm:overflow-x-auto'>
     <ul className='max-w-6xl min-w-[340px] mx-auto'>
@@ -14,7 +14,7 @@ const SupportList = ({finalResult, lang}) => {
         <span className='block text-left'>{Heading.currency_code[lang]}</span>
         <span>{Heading.currency_symbol[lang]}</span>
       </li>
-      {filiterCountryWithNoCureencyName?.map(country => {
+      {filiteredCountry?.map(country => {
         
         return (
           <li key={country?.id} 

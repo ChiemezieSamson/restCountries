@@ -27,7 +27,7 @@ const List = ({countries, count, size, buttonClicked}) => {
         {countries?.map((country, index) => {
           
           return (
-            <li key={country?.id + index.toString()} className='inline-block relative group hover:scale-105 focus-within:scale-110 transitionEffect' title={country?.name?.length > 10 ? country?.name : ""}>
+            <li key={country?.id + index.toString()} className='inline-block relative group hover:scale-105 focus-within:scale-105 transitionEffect' title={country?.name?.length > 10 ? country?.name : ""}>
               <div className='absolute left-0 inset-y-0 grid items-center justify-center -z-10'>
                 <img 
                   src={country?.flag?.svg} 

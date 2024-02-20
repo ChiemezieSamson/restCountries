@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useOutletContext } from 'react-router-dom';
 import { Heading } from './data';
 import { useFetchCountryAndCurrencyCode } from '../../sharedComponent/sharedComponent';
-import Search from './Search/Search';
+import Search from '../../sharedComponent/Search/Search';
 import ToggleButton from './ToggleButton/ToggleButton';
 import { ascendingArrangement } from './ToggleButton/data';
 import SupportList from './SupportList/SupportList';
@@ -73,7 +73,7 @@ const SupportedCodes = () => {
       <ToggleButton 
         searchResult={searchResult}  
         lang={lang} 
-        countries={ascendingByCountry} 
+        ascendingByCountry={ascendingByCountry} 
         handleSetArrangeResult={handleSetArrangeResult}
         countryCurrencyCode={countryCurrencyCode}
       />

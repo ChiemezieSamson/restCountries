@@ -6,7 +6,6 @@ import ArrangeMent from '../Arrangement/ArrangeMent';
 import List from '../List/List';
 import Grid from '../Grid/Grid';
 import Detailed from '../Detailed/Detailed';
-import TotheTop from '../BackToTop/BacktoTop';
 
 const CountiersIndex = () => {
   const [,lang,, width, countries, count, showCount, handleSetCount, handleSetShowCount, handleSetButtonClicked, buttonClicked, handleSetSearchResult,
@@ -37,8 +36,6 @@ const CountiersIndex = () => {
           :
         <Detailed  lang={lang} countries={finalResult}/>
       }
-
-      <TotheTop />
     </div>
   )
 }

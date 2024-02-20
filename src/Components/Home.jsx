@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Navigation from './Navigation/Navigation';
 import { Outlet, ScrollRestoration } from 'react-router-dom';
+import TotheTop from './BackToTop/BacktoTop';
 
 const Home = ({login, login2}) => {
   const [isLanguage, setIsLanguage] = useState("ko");
@@ -39,6 +40,8 @@ const Home = ({login, login2}) => {
               location.key;
         }}
         />   
+
+        <TotheTop />
       </main>   
     </div>
   )

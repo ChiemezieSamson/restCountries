@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { arrangementIconsToggle, descendingArrangement } from './data'
 
-const ToggleButton = ({searchResult, lang, countries, handleSetArrangeResult, countryCurrencyCode}) => {
+const ToggleButton = ({searchResult, lang, ascendingByCountry, handleSetArrangeResult, countryCurrencyCode}) => {
   const { descendingByCountry } = descendingArrangement(countryCurrencyCode, lang)
   const [clickIcon, setClickedIcon] = useState("ascend")
   const handleSetToggleButton = (event) => {
@@ -9,7 +9,7 @@ const ToggleButton = ({searchResult, lang, countries, handleSetArrangeResult, co
 
     // set to ascending order
     if (IconName !== "ascend") {
-      handleSetArrangeResult(() => countries)
+      handleSetArrangeResult(() => ascendingByCountry)
     } 
 
      // set to descending order

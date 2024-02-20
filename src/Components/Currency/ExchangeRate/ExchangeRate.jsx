@@ -7,7 +7,7 @@ const ExchangeRate = () => {
   const [lang, login, login2, loginKey, APiCode, loginUrl] = useOutletContext();
   const { countryId } = useParams();
   const { countryCurrencyCode, Error, Loading } = useFetchCountryAndCurrencyCode(login, login2, loginKey, APiCode)
-  const { foundCountry } = useFetchCountry(countryId, countryCurrencyCode, lang)
+  const { foundCountry } = useFetchCountry(countryId, countryCurrencyCode)
   const [code , setCode] = useState("USD")
 
   useEffect(() => {
@@ -31,7 +31,7 @@ const ExchangeRate = () => {
 
   return (
     <div>
-      <Outlet context={[lang, loginKey, loginUrl, code, countryId, countryCurrencyCode]}/>
+      <Outlet context={[lang, loginKey, loginUrl, code, countryId, countryCurrencyCode, foundCountry]}/>
     </div>
   )
 }

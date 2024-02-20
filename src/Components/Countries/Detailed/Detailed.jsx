@@ -11,7 +11,7 @@ const Detailed = ({lang, countries}) => {
           return (
             <li key={country?.id + index.toString()} className='bg-slate-300/300 textLight dark:dark_text dark:bgLight px-2 py-5 rounded-xl shadow-md dark:shadow-slate-50/50 shadow-slate-800/50 
             uppercase tracking-widest transitionEffect backdrop-blur-[1px] dark:backdrop-blur-0 hover:scale-105 focus-within:scale-110 transitionEffect' 
-            title={country?.name?.length > 15 ? country?.name : ""}>
+            title={country?.name?.length > 14 ? country?.name : ""}>
               <div>
                 
                 <img 

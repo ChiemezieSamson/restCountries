@@ -1,18 +1,18 @@
 import React, { useState } from 'react'
-import { sortedByLowestPopulation, sortedByhigHestPopulation} from './data'
-import { total } from '../../sharedComponent/sharedComponent'
-import { arrangementIcons, arrangementIconsToggle, tenHighestPopulation, tenLowestPopulation, tenMiddlePopulation } from '../../sharedComponent/IconArrangementDate'
+import { arrangementIcons, arrangementIconsToggle, tenHighestPopulation, tenLowestPopulation, tenMiddlePopulation } from '../../../../sharedComponent/IconArrangementDate'
+import { total } from '../../../../sharedComponent/sharedComponent'
+import { Reset, sortedByLowestExChangeRate, sortedByhigHestExChangeRate } from './data'
+import { FaHistory } from 'react-icons/fa'
 
-const PopulationSelectionButton = ({lang, handleSetArrangeResult, countries, searchResult, finalResult}) => {
+const ExchangeRateSlectionButton = ({searchResult, finalResult, lang, countriesRate,  handleSetArrangeResult}) => {
   const [toggleButton, setToggleButton] = useState(false)
   const [clickIcon, setClickedIcon] = useState("highest")
   const [sortLastArrangment, setsortLastArrangment] = useState("")
-  const { sortedArrayDescending } = sortedByhigHestPopulation(countries)
-  const { sortedArrayAscending } = sortedByLowestPopulation(countries)
+  const { sortedArrayAscending } = sortedByhigHestExChangeRate(countriesRate)
+  const { sortedArrayDescending } = sortedByLowestExChangeRate(countriesRate)
   const { highestTenPopulation } = tenHighestPopulation(sortedArrayDescending)
   const { lowestTenPopulation } = tenLowestPopulation(sortedArrayAscending)
   const { middlePopulation } = tenMiddlePopulation(sortedArrayAscending)
-
 
   const handlerandom = (event) => {
     const IconName = event.target.id
@@ -52,7 +52,6 @@ const PopulationSelectionButton = ({lang, handleSetArrangeResult, countries, sea
     }
   }
 
-
   const handleSetToggleButton = (event) => {
     const IconName = event.target.id
 
@@ -75,11 +74,17 @@ const PopulationSelectionButton = ({lang, handleSetArrangeResult, countries, sea
     setToggleButton((change) => !change)
   }
 
+  const handleReset = () => {
+    handleSetArrangeResult(() => countriesRate)
+    setClickedIcon(() => "highest")
+    setsortLastArrangment(() => "")
+    setToggleButton(() => false)
+  }
 
   return (
-    <div className='mx-2 px-2 mb-6 mt-4 grid xs:grid-flow-col gap-y-3 justify-center text-center xs:text-left xs:justify-between'>
-      <p><strong>{total[lang]} :</strong> {finalResult ? finalResult.length : countries.length}</p>
-      <ul className='grid grid-cols-4 max-w-xs gap-x-3 text-lg font-semibold'>
+    <div className='mx-2 px-2 mb-6 mt-4 grid sm:grid-flow-col gap-y-3 justify-center text-center sm:text-left sm:justify-between'>
+      <p><strong>{total[lang]} :</strong> {finalResult ? finalResult.length : countriesRate.length}</p>
+      <ul className='grid grid-cols-5 max-w-xs gap-x-3 text-lg font-semibold'>
         {arrangementIcons.map(button => {
           return (
             <li key={button.id} title={button?.title[lang]}>
@@ -104,9 +109,18 @@ const PopulationSelectionButton = ({lang, handleSetArrangeResult, countries, sea
             {toggleButton ? arrangementIconsToggle[0]?.icon : arrangementIconsToggle[1]?.icon}
           </button>
         </li>
+        <li title={Reset[lang]}>
+          <button 
+            className='line border px-4 rounded-xl hover:lineSoft hover:bgObject transitionEffect relative isolate after:absolute after:inset-0 after:rounded-xl after:border after:border-transparent'
+            onClick={handleReset}
+            disabled={searchResult[0]}
+          >
+            <FaHistory className='inline-block' />
+          </button>
+        </li>
       </ul>      
     </div>
   )
 }
 
-export default PopulationSelectionButton
+export default ExchangeRateSlectionButton

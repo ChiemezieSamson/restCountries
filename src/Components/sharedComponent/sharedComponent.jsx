@@ -285,3 +285,10 @@ export const useFetchCountryAndCurrencyCode = (login, login2, loginKey, APiCode)
 
   return  { countryCurrencyCode, Error, Loading }
 } 
+
+
+export const useFiliterCountryWithNoCureencyName = (countries) => {
+	const filiteredCountry = countries.filter(country => country?.currency_code !== "")
+
+	return { filiteredCountry }
+}
