@@ -32,7 +32,7 @@
 
   
   select {
-    @apply bg-transparent focus:outline-none focus:border-0 rounded-lg
+    @apply bg-transparent focus:outline-none focus:border-0 rounded-lg 
   }
  
   [type='search'] {

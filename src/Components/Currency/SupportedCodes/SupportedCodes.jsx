@@ -23,8 +23,6 @@ const SupportedCodes = () => {
     setArrangeResult(searchArray)
   }
 
-  // console.log(arrangeResult);
-
   useEffect(() => {
     if(searchResult[0]) {
       setFinalResult(() => [...searchResult].sort((a, b) =>  a.name[lang].toLowerCase().localeCompare(b.name[lang], lang)))

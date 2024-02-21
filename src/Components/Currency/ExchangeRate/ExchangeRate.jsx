@@ -11,19 +11,18 @@ const ExchangeRate = () => {
   const [code , setCode] = useState("USD")
 
   useEffect(() => {
-    if(foundCountry?.id) {
-
+    if(countryId) {
       if (countryId === "croatia") {
         setCode(() => "HRK")
+        return
       } 
 
       if (countryId === "sierra leone") {
         setCode(() => "SLE")
+        return
       }
 
-      if (countryId !== "croatia" && countryId === "sierra leone") {
-        setCode(() => foundCountry?.currency_code)
-      }
+      setCode(() => foundCountry?.currency_code)
     } else {
       setCode(() => "USD")
     }

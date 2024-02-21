@@ -24,6 +24,7 @@ const apiUrl2 = process.env.REACT_APP_TRANSLATED_RESTCOUNTRIES_API_URL;
 const exchangeRateApiKey = process.env.REACT_APP_EXCHANGERATE_API_KEY;
 const exchangeRateApiUrl = process.env.REACT_APP_EXCHANGERATE_API_URL;
 const exchangeRateApiCode = process.env.REACT_APP_EXCHANGERATE_API_CODE;
+const exchangeRateApiPair = process.env.REACT_APP_EXCHANGERATE_PAIR;
 
 const App = createBrowserRouter([
 	{
@@ -89,6 +90,7 @@ const App = createBrowserRouter([
 						loginUrl={exchangeRateApiUrl}
 						loginKey={exchangeRateApiKey}
 						APiCode={exchangeRateApiCode}
+						APiPair={exchangeRateApiPair}
 					/>
 				),
 				errorElement: <div>Not Found</div>,
@@ -128,11 +130,6 @@ const App = createBrowserRouter([
 							{
 								index: true,
 								element: <PairConversionIndex />,
-								errorElement: <div>Not Found</div>,
-							},
-							{
-								path: "/currency/pair_conversion/:currencyCode",
-								element: <PairConversionCurrency />,
 								errorElement: <div>Not Found</div>,
 							},
 						],

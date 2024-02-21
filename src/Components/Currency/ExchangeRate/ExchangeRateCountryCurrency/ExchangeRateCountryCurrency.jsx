@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { NameTags, useFetchCountryWithExchangeRate } from './data'
+import { NameTags } from './data'
 import { useOutletContext } from 'react-router-dom';
 import ExchangerateList from './ExchangerateList/ExchangerateList';
+import { useFetchCountriesUniqueArrayById } from '../../../sharedComponent/sharedComponent';
 
 const ExchangeRateCountryCurrency = () => {
   const [lang, loginKey, loginUrl, code, countryId, countryCurrencyCode, foundCountry] = useOutletContext();
-  const { countriesRate, lastUpdate, nextUpdate, exchangerateLoading, exchangerateError } = useFetchCountryWithExchangeRate(countryCurrencyCode, countryId, loginUrl, loginKey, code, lang)
+  const { countries, lastUpdate, nextUpdate, exchangerateLoading, exchangerateError } = useFetchCountriesUniqueArrayById(countryCurrencyCode, countryId, loginUrl, loginKey, code, lang)
   const [searchResult, setSearchResult] = useState([])
   const [arrangeResult, setArrangeResult] = useState([])
   const [finalResult, setFinalResult] = useState([])
@@ -27,11 +28,9 @@ const ExchangeRateCountryCurrency = () => {
     if(arrangeResult[0]) {
       setFinalResult(() => arrangeResult)
       return
-    }
+    } 
 
-    setFinalResult(() => [...countriesRate].sort((a, b) =>  a.name[lang].toLowerCase().localeCompare(b.name[lang], lang)))
-    return
-  }, [arrangeResult, searchResult, countriesRate, lang])
+  }, [arrangeResult, searchResult, lang])
 
 
   return (
@@ -53,10 +52,10 @@ const ExchangeRateCountryCurrency = () => {
 
       <div className='py-5 px-2 mx-2'>
         <ExchangerateList  
-          countriesRate={countriesRate} 
+          countriesRate={countries} 
           lang={lang} 
           searchResult={searchResult}
-          finalResult={finalResult}
+          finalResult={finalResult[0] ? finalResult : countries}
           handleSetSearchResult={handleSetSearchResult}
           handleSetArrangeResult={handleSetArrangeResult}
         />

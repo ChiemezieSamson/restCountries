@@ -1,14 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { useFiliterCountryWithNoCureencyName } from '../../../../sharedComponent/sharedComponent'
 import Search from '../../../../sharedComponent/Search/Search'
 import ExchangeRateSlectionButton from '../ExchangeRateSlectionButton/ExchangeRateSlectionButton'
 
 const ExchangerateList = ({countriesRate, lang, handleSetSearchResult, searchResult, finalResult, handleSetArrangeResult}) => {
-  const { filiteredCountry } = useFiliterCountryWithNoCureencyName(finalResult)
+
   return (
     <div>
-      <Search countries={filiteredCountry} lang={lang} handleSetSearchResult={handleSetSearchResult}/>
+      <Search countries={finalResult} lang={lang} handleSetSearchResult={handleSetSearchResult}/>
       <ExchangeRateSlectionButton 
         searchResult={searchResult} 
         finalResult={finalResult} 
@@ -17,7 +16,7 @@ const ExchangerateList = ({countriesRate, lang, handleSetSearchResult, searchRes
         handleSetArrangeResult={handleSetArrangeResult}
       />
       <ul className='grid gap-x-4 max-w-4xl mx-auto p-1 overflow-x-scroll md:overflow-x-hidden pt-10'>
-        {filiteredCountry?.map((country, index) => {
+        {finalResult?.map((country, index) => {
           return (
             <li key={country?.id + index} className='grid grid-cols-3 md:grid-cols-4 border-t-2 last:border-b-2 border-black dark:border-white min-w-[488px] md:min-w-0'>
 

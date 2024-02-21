@@ -9,6 +9,7 @@ import Oceania from "./../asset/images/oceania-icon.png";
 import SouthAmerica from "./../asset/images/south-america-icon.png";
 import Caribbean from "./../asset/images/carribbean-icon.png";
 import { Link } from "react-router-dom";
+import { useFetchCountryWithExchangeRate } from "../Currency/ExchangeRate/ExchangeRateCountryCurrency/data";
 
 
 export const useApiFetchingComponent = (login) => {
@@ -291,4 +292,15 @@ export const useFiliterCountryWithNoCureencyName = (countries) => {
 	const filiteredCountry = countries.filter(country => country?.currency_code !== "")
 
 	return { filiteredCountry }
+}
+
+
+export const useFetchCountriesUniqueArrayById = (countryCurrencyCode, countryId, loginUrl, loginKey, code, lang) => {
+	const { countriesRate, lastUpdate, nextUpdate, exchangerateLoading, exchangerateError } = useFetchCountryWithExchangeRate(countryCurrencyCode, countryId, loginUrl, loginKey, code, lang)
+	const { filiteredCountry } = useFiliterCountryWithNoCureencyName(countriesRate)
+  const uniqueArrayById = filiteredCountry.filter((obj, index, self) =>
+    index === self.findIndex((o) => o.id === obj.id)
+  );
+
+	return {countries: uniqueArrayById, lastUpdate, nextUpdate, exchangerateLoading, exchangerateError}
 }
