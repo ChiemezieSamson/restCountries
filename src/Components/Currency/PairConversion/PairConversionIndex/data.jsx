@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 
-export const useApiFetchingPairConversion = (loginKey, APiPair, firstPair, secondPair, amount) => {
+export const useApiFetchingPairConversion = (loginKey, APiPair, firstPair, secondPair, debouncedSearchTerm) => {
 	const [pairConvertion, setPairConvertion] = useState(null);
 	const [pairConvertionLoading, setPairConvertionLoading] = useState(true);
 	const [pairConvertionError, setPairConvertionError] = useState(null);
+	
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -13,7 +14,7 @@ export const useApiFetchingPairConversion = (loginKey, APiPair, firstPair, secon
 				setPairConvertionLoading(true);
 
 				// Fetch data from the API
-				const response = await fetch(`${APiPair}/${firstPair}/${secondPair}/${amount}`, {
+				const response = await fetch(`${APiPair}/${firstPair}/${secondPair}/${debouncedSearchTerm}`, {
           method: 'GET',
           headers: {
             'Authorization': `Bearer ${loginKey}`,
@@ -35,7 +36,7 @@ export const useApiFetchingPairConversion = (loginKey, APiPair, firstPair, secon
 
 		// Call the fetchData function
 		fetchData();
-	}, [APiPair, loginKey, firstPair, secondPair, amount]);
+	}, [APiPair, loginKey, firstPair, secondPair, debouncedSearchTerm]);
 
 	return { pairConvertion, pairConvertionLoading, pairConvertionError };
 };
