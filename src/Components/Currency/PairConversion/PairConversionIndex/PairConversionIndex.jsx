@@ -17,7 +17,7 @@ const PairConversionIndex = () => {
   const [savedPair, setSavedPair] = useState([])
   const [pairData, setPairData] = useState(false)
   const [pairRevers, setPairRevers] = useState(false)
-   const [pairWasReversed, setPairWasReversed] = useState(true);
+  const [pairWasReversed, setPairWasReversed] = useState(true);
   const [isSearching, setIsSearching] = useState(false);
   const [setOnce, setSetOnce] = useState(true);
   const [lang, loginKey, APiPair, countryCurrencyCode, loginUrl] = useOutletContext();

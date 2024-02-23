@@ -20,7 +20,7 @@ export const navLink = [
 		url: "/countries",
 	},
 	{
-		id: 1,
+		id: 2,
 		name: {
 			en: "Population",
 			zh: "人口",
@@ -29,7 +29,7 @@ export const navLink = [
 		url: "/population",
 	},
 	{
-		id: 1,
+		id: 3,
 		name: {
 			en: "Currencies",
 			zh: "货币",
@@ -38,7 +38,7 @@ export const navLink = [
 		url: "/currency",
 	},
 	{
-		id: 1,
+		id: 4,
 		name: {
 			en: "Regions",
 			zh: "地区",
