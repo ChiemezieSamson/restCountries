@@ -382,7 +382,7 @@ export const useFetchCountryWithExchangeRate = (countryCurrencyCode, countryId, 
       setCountriesRate(() => [...newCountriesList].sort((a, b) =>  a.name[lang].toLowerCase().localeCompare(b.name[lang], lang)))
     }
 
-  }, [exchangerate, countryCurrencyCode, countryId, lang])
+  }, [exchangerate, countryCurrencyCode, countryId, lang, firstCountryName])
 
   return { countriesRate, lastUpdate, nextUpdate, exchangerateLoading, exchangerateError }
 }
@@ -396,4 +396,11 @@ export const useFetchCountriesUniqueArrayById = (countryCurrencyCode, countryId,
   );
 
 	return {countries: uniqueArrayById, lastUpdate, nextUpdate, exchangerateLoading, exchangerateError}
+}
+
+
+export const useFetchCountry = (countryId, countryCurrencyCode) => {
+  const search = countryId ? countryId : "united states"
+  const foundCountry = countryCurrencyCode.find(country => country.id === search)
+  return { foundCountry }
 }

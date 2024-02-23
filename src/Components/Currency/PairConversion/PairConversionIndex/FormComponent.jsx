@@ -2,9 +2,11 @@ import React, { useState } from 'react'
 import PairConversionList from '../PairConversionList/PairConversionList'
 import { PiDoorOpenBold } from 'react-icons/pi'
 import { FaEllipsisH } from 'react-icons/fa'
+import { useFetchCountry } from '../../../sharedComponent/sharedComponent'
 
-const FormComponent = ({lang, countries, pairConvertion, lastUpdate, nextUpdate, handleSetAmount, selectValue, amount, handlePair, inputValue, isSearching}) => {
+const FormComponent = ({lang, countries, selectValue, amount, inputValue, handlePair, getinputValue, isSearching, idName}) => {
   const [openCountryList, setOpenCountryList] = useState(false)
+  const { foundCountry } = useFetchCountry(selectValue, countries);
 
   const handleCloseOpenCountryList = () => {
     setOpenCountryList(() => false)
@@ -15,11 +17,13 @@ const FormComponent = ({lang, countries, pairConvertion, lastUpdate, nextUpdate,
       <form id="search-form" role="search" onSubmit={(e) => e.preventDefault()} className='relative block'> 
         <input 
           type="text" 
-          id='firstPair' 
-          name='firstPair' 
-          placeholder={amount}
+          id={idName}
+          name={idName}
+          autoFocus={idName === "firstPair" ? true : false}
+          placeholder={amount === 0 ? " " : amount}
+          value={inputValue}
           aria-label="text" 
-          onChange={(event) => inputValue(event)}
+          onChange={(event) => getinputValue(event)}
           maxLength="12"
           className=' focus:outline-none focus:border-0 w-full focus:ring-0 caret-stone-900 rounded-lg font-medium placeholder:textLight
           dark:placeholder:dark_text textLight tracking-wide shadow-inner focus:shadow-slate-400/60 py-2 pl-4 bg-stone-200 dark:bg-stone-400 border-slate-300'
@@ -29,7 +33,7 @@ const FormComponent = ({lang, countries, pairConvertion, lastUpdate, nextUpdate,
           <button type='submit' disabled={isSearching}>
           {isSearching ? <FaEllipsisH className='inline-block font-semibold text-lg animate-pulse '/> :
             <>
-              <span className='capitalize inline-block pt-px mx-3 font-semibold font-poppins leading-relaxed'>{selectValue.slice(0, 15)}{selectValue.length > 15 ? "..." : ""}</span>
+              <span className='capitalize inline-block pt-px mx-3 font-semibold font-poppins leading-relaxed'>{foundCountry?.name[lang].slice(0, 15)}{foundCountry?.name[lang].length > 15 ? "..." : ""}</span>
               <PiDoorOpenBold className='inline-block font-semibold text-lg'/>
             </>
           }

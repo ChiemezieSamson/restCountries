@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Outlet, useOutletContext, useParams } from 'react-router-dom';
-import { useFetchCountryAndCurrencyCode } from '../../sharedComponent/sharedComponent';
-import { useFetchCountry } from './ExchangeRateIndex/data';
+import { useFetchCountry, useFetchCountryAndCurrencyCode } from '../../sharedComponent/sharedComponent';
 
 const ExchangeRate = () => {
   const [lang, login, login2, loginKey, APiCode, loginUrl] = useOutletContext();

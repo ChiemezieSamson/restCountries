@@ -6,12 +6,22 @@ import ArrangeMent from '../Arrangement/ArrangeMent';
 import List from '../List/List';
 import Grid from '../Grid/Grid';
 import Detailed from '../Detailed/Detailed';
+import { worldcountriesData } from './data';
 
 const CountiersIndex = () => {
   const [,lang,, width, countries, count, showCount, handleSetCount, handleSetShowCount, handleSetButtonClicked, buttonClicked, handleSetSearchResult,
     handleSetArrangeResult, searchResult, finalResult] = useOutletContext();
   return (
     <div className='pt-14'>
+      <div className='mb-20'>
+        <h1 className='headTitle1'>
+          {worldcountriesData.title[lang]}
+        </h1>
+        <h4 className='headSubTitle1'>
+          {worldcountriesData.sub_title[lang]}
+        </h4>
+      </div>
+
       <SelectionButton 
         showCount={showCount} 
         count={count} 

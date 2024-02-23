@@ -7,11 +7,11 @@ const SingleRegion = () => {
   const [lang, login] = useOutletContext();
   const { regionsId } = useParams();
   const { data, loading, error } = useApiFetchingComponent(login)
-  const {countries} = useFetchCountriesByRegion(regionsId, data)
+  const {countries} = useFetchCountriesByRegion(regionsId, data, lang)
   const { RegionName, OtherRegion } = regionByLanguage(regionsId, lang)
 
   return (
-    <div className='py-44 mb-20'>
+    <div className='py-32 mb-20'>
       <h1 className='headTitle1'>
         {lang === "en" ? `${singleRegionData.title[lang]} ${RegionName}` : `${RegionName}${singleRegionData.title[lang]}`}
       </h1>

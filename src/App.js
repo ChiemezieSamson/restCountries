@@ -14,7 +14,6 @@ import CurrencyInedx from "./Components/Currency/CurrencyInedx/CurrencyInedx";
 import SupportedCodes from "./Components/Currency/SupportedCodes/SupportedCodes";
 import PairConversion from "./Components/Currency/PairConversion/PairConversion";
 import PairConversionIndex from "./Components/Currency/PairConversion/PairConversionIndex/PairConversionIndex";
-import PairConversionCurrency from "./Components/Currency/PairConversion/PairConversionCurrency/PairConversionCurrency";
 import ExchangeRateIndex from "./Components/Currency/ExchangeRate/ExchangeRateIndex/ExchangeRateIndex";
 import ExchangeRate from "./Components/Currency/ExchangeRate/ExchangeRate";
 import ExchangeRateCountryCurrency from "./Components/Currency/ExchangeRate/ExchangeRateCountryCurrency/ExchangeRateCountryCurrency";

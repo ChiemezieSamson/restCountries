@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { worldRegionsData } from "../../sharedComponent/sharedComponent";
 
-export const useFetchCountriesByRegion = (regionsId, data) => {
+export const useFetchCountriesByRegion = (regionsId, data, lang) => {
   const [countries, setCountries] = useState([]);
 	
 	useEffect(() => {
@@ -29,10 +29,10 @@ export const useFetchCountriesByRegion = (regionsId, data) => {
 					return newlist
 				})
 
-				setCountries(() => allCountries);
+				setCountries(() => [...allCountries].sort((a, b) =>  a.name[lang].toLowerCase().localeCompare(b.name[lang], lang)));
 			}
 		}
-	}, [regionsId, data])
+	}, [regionsId, data, lang])
 
 	return { countries };
 };

@@ -12,10 +12,22 @@ const PairConversionList = ({countries, lang, handlePair, selectValue, handleClo
       <ul name="country" id="country" 
         className='capitalize px-2 font-semibold border-0 focus:border-0 font-poppins py-2 leading-relaxed grid gap-y-3'>
         {countries?.map(country => {
+          let setCode 
+          if(country?.id) {
+            if (country?.id === "croatia") {
+              return setCode = "HRK"
+            } 
+      
+            if (country?.id === "sierra leone") {
+              return setCode ="SLE"
+            }
+      
+            setCode = country?.currency_code
+          }
           return (
             <li key={country?.id} id={country?.currency_code} title={country?.name[lang]?.length > 18 ? country?.name[lang] : ""} 
               className={`${selectValue === country?.id ? "dark:bgLight bg-slate-500/30" : ""} cursor-pointer dark:hover:bgLight hover:bg-slate-500/30 transitionEffect`} 
-              onClick={() => handleSelect(country?.currency_code, country?.id)}>
+              onClick={() => handleSelect(setCode, country?.id)}>
               <img 
                 src={country?.flag?.svg ? country?.flag?.svg : country?.flag?.png} 
                 alt={country?.flag?.alt} 
@@ -23,7 +35,7 @@ const PairConversionList = ({countries, lang, handlePair, selectValue, handleClo
                 className='aspect-square size-7 inline-block hover:scale-[1.03] focus-within:scale-[1.03] transitionEffect'
               />
 
-              <span className='inline-block mx-3'>
+              <span className='inline-block mx-3 text-stone-900'>
                 {country?.name[lang]?.slice(0, 18)}
                 {country?.name[lang]?.length > 18  && "..."}
               </span>
