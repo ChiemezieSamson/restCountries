@@ -1,14 +1,16 @@
 import React from 'react'
 import { Outlet, useOutletContext } from 'react-router-dom';
 import { useFetchCountryAndCurrencyCode } from '../../sharedComponent/sharedComponent';
+import Error from '../../Error/Error';
 
 const PairConversion = () => {
   const [lang, login, login2, loginKey, APiCode, loginUrl, APiPair] = useOutletContext();
-  const { countryCurrencyCode, Error, Loading } = useFetchCountryAndCurrencyCode(login, login2, loginKey, APiCode)
+  const { countryCurrencyCode, Serror, SLoading } = useFetchCountryAndCurrencyCode(login, login2, loginKey, APiCode)
 
   return (
     <div>
-      <Outlet context={[lang, loginKey, APiPair, countryCurrencyCode, loginUrl]}/>
+      <Outlet context={[lang, loginKey, APiPair, countryCurrencyCode, loginUrl, SLoading]}/>
+      <Error customId={"pairConversion"} error1={Serror}/>
     </div>
   )
 }

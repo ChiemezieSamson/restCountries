@@ -5,6 +5,8 @@ import { useFetchCountriesUniqueArrayById } from '../../../sharedComponent/share
 import FormComponent from './FormComponent';
 import { useDebounce } from '@uidotdev/usehooks';
 import ImageComponent from './ImageComponent';
+import Error from '../../../Error/Error';
+import Loading from '../../../Loading/Loading';
 
 const PairConversionIndex = () => {
   const [firstCountryName, setFirstCountryName] = useState("united states")
@@ -20,12 +22,13 @@ const PairConversionIndex = () => {
   const [pairWasReversed, setPairWasReversed] = useState(true);
   const [isSearching, setIsSearching] = useState(false);
   const [setOnce, setSetOnce] = useState(true);
-  const [lang, loginKey, APiPair, countryCurrencyCode, loginUrl] = useOutletContext();
+  const [lang, loginKey, APiPair, countryCurrencyCode, loginUrl, SLoading] = useOutletContext();
   const debouncedSearchTerm  = useDebounce(amount, 1000);
   const { pairConvertion, pairConvertionLoading, pairConvertionError } = useApiFetchingPairConversion(loginKey, APiPair, firstPair, secondPair, debouncedSearchTerm)
   const countryId = firstCountryName
   const { countries, lastUpdate, nextUpdate, exchangerateLoading, exchangerateError } = useFetchCountriesUniqueArrayById(countryCurrencyCode, countryId, loginUrl, loginKey, firstPair, lang, firstCountryName)
 
+  const stillLoading = SLoading && pairConvertionLoading && exchangerateLoading
 
   const handleSetFirstPair = (pair, country, isSecondPair) => {
     setSetOnce(() => true)
@@ -205,6 +208,8 @@ const PairConversionIndex = () => {
           />
         </div> 
       </div>
+      <Loading loading={stillLoading}/> 
+      <Error customId={"pairconversionIndex"} error1={pairConvertionError} error2={exchangerateError}/>
     </div>
   )
 }

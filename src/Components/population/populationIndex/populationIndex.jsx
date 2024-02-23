@@ -5,6 +5,8 @@ import { Heading, useFetchNameAndPopulation } from './data';
 import PopulationSearch from '../PopulationSearch/PopulationSearch';
 import PopulationSelectionButton from '../PopulationSelectionButton/PopulationSelectionButton';
 import PopulationBarCharts from '../PopulationBarCharts/PopulationBarCharts';
+import Error from '../../Error/Error';
+import Loading from '../../Loading/Loading';
 
 const PopulationIndex = () => {
   const [lang, login] = useOutletContext();
@@ -74,10 +76,13 @@ const PopulationIndex = () => {
         finalResult={finalResult}
       />
 
+      <Loading loading={loading}/> 
+
       <PopulationBarCharts 
         lang={lang}
         finalResult={finalResult}
       />
+      <Error customId={"populationIndex"} error1={error}/>
     </div>
   )
 }

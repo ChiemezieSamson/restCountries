@@ -2,6 +2,8 @@ import React from 'react'
 import {RegionListComponent, total, useApiFetchingComponent} from "./../../sharedComponent/sharedComponent"
 import { Link, useOutletContext, useParams } from 'react-router-dom';
 import { regionByLanguage, singleRegionData, useFetchCountriesByRegion } from './data';
+import Error from '../../Error/Error';
+import Loading from '../../Loading/Loading';
 
 const SingleRegion = () => {
   const [lang, login] = useOutletContext();
@@ -16,6 +18,8 @@ const SingleRegion = () => {
         {lang === "en" ? `${singleRegionData.title[lang]} ${RegionName}` : `${RegionName}${singleRegionData.title[lang]}`}
       </h1>
       <h4 className='headSubTitle1'><strong>{total[lang]} :</strong> {countries ? countries.length : 0}</h4>
+
+      <Loading loading={loading}/>
 
       <ul className='mt-20 px-4 gap-4 grid xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5'>
         {countries?.map((country, index) => {				
@@ -48,6 +52,7 @@ const SingleRegion = () => {
 
         <RegionListComponent region={OtherRegion} lang={lang}/>
       </div>      
+      <Error customId={"singleregion"} error1={error}/>
     </div>
   )
 }

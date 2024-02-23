@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { Outlet, useOutletContext, useParams } from 'react-router-dom';
 import { useFetchCountry, useFetchCountryAndCurrencyCode } from '../../sharedComponent/sharedComponent';
+import Error from '../../Error/Error';
 
 const ExchangeRate = () => {
   const [lang, login, login2, loginKey, APiCode, loginUrl] = useOutletContext();
   const { countryId } = useParams();
-  const { countryCurrencyCode, Error, Loading } = useFetchCountryAndCurrencyCode(login, login2, loginKey, APiCode)
+  const { countryCurrencyCode, Serror, SLoading } = useFetchCountryAndCurrencyCode(login, login2, loginKey, APiCode)
   const { foundCountry } = useFetchCountry(countryId, countryCurrencyCode)
   const [code , setCode] = useState("USD")
 
@@ -29,7 +30,8 @@ const ExchangeRate = () => {
 
   return (
     <div>
-      <Outlet context={[lang, loginKey, loginUrl, code, countryId, countryCurrencyCode, foundCountry]}/>
+      <Outlet context={[lang, loginKey, loginUrl, code, countryId, countryCurrencyCode, foundCountry, SLoading]}/>
+      <Error customId={"exchangerate"} error1={Serror}/>
     </div>
   )
 }

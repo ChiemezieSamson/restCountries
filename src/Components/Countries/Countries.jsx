@@ -3,6 +3,7 @@ import { Outlet, useOutletContext } from 'react-router-dom';
 import { useWindowSize } from '@uidotdev/usehooks';
 import { useDetailedCountriesName } from './SharedComponent/SharedComponent';
 import { useApiFetchingComponent, useApiFetchingTranslatedData } from '../sharedComponent/sharedComponent';
+import Error from '../Error/Error';
 
 
 const Countries = () => {
@@ -20,10 +21,6 @@ const Countries = () => {
   const size = useWindowSize();
   const width = size.width
 
-  // if (TranslatedData) {
-  //   console.log(TranslatedData[0]);
-  // } 
-  
 
   const handleSetCount = (number) => {
     setCount(number)
@@ -96,7 +93,8 @@ const Countries = () => {
     <div className='pt-16'>
       <div className=''>
         <Outlet context={[data, lang, TranslatedData, width, countries, count, showCount, handleSetCount, handleSetShowCount, handleSetButtonClicked, buttonClicked, handleSetSearchResult,
-    handleSetArrangeResult, searchResult, finalResult]}/>
+    handleSetArrangeResult, searchResult, finalResult, loading, Tloading]}/>
+        <Error customId={"countries"} error1={error} error2={Terror}/>
       </div>
     </div>
   )

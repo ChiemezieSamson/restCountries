@@ -7,10 +7,13 @@ import List from '../List/List';
 import Grid from '../Grid/Grid';
 import Detailed from '../Detailed/Detailed';
 import { worldcountriesData } from './data';
+import Loading from '../../Loading/Loading';
 
 const CountiersIndex = () => {
   const [,lang,, width, countries, count, showCount, handleSetCount, handleSetShowCount, handleSetButtonClicked, buttonClicked, handleSetSearchResult,
-    handleSetArrangeResult, searchResult, finalResult] = useOutletContext();
+    handleSetArrangeResult, searchResult, finalResult, loading, Tloading] = useOutletContext();
+
+    const stillLoading = loading && Tloading
   return (
     <div className='pt-14'>
       <div className='mb-20'>
@@ -38,6 +41,8 @@ const CountiersIndex = () => {
       </div>
 
       <ArrangeMent finalResult={finalResult} searchResult={searchResult} countries={countries} lang={lang} handleSetArrangeResult={handleSetArrangeResult}/>
+
+      <Loading loading={stillLoading}/> 
 
       {buttonClicked === "list" ?
         <List count={count} size={width} buttonClicked={buttonClicked} countries={finalResult}/> 

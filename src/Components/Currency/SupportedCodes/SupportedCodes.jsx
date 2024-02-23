@@ -6,10 +6,12 @@ import Search from '../../sharedComponent/Search/Search';
 import ToggleButton from './ToggleButton/ToggleButton';
 import { ascendingArrangement } from './ToggleButton/data';
 import SupportList from './SupportList/SupportList';
+import Error from '../../Error/Error';
+import Loading from '../../Loading/Loading';
 
 const SupportedCodes = () => {
   const [lang, login, login2, loginKey, APiCode] = useOutletContext();
-  const { countryCurrencyCode, Error, Loading } = useFetchCountryAndCurrencyCode(login, login2, loginKey, APiCode)
+  const { countryCurrencyCode, Serror, SLoading } = useFetchCountryAndCurrencyCode(login, login2, loginKey, APiCode)
   const { ascendingByCountry } = ascendingArrangement(countryCurrencyCode, lang)
   const [searchResult, setSearchResult] = useState([])
   const [arrangeResult, setArrangeResult] = useState([])
@@ -75,8 +77,9 @@ const SupportedCodes = () => {
         handleSetArrangeResult={handleSetArrangeResult}
         countryCurrencyCode={countryCurrencyCode}
       />
-
+      <Loading loading={SLoading}/> 
       <SupportList lang={lang} finalResult={finalResult}/>
+      <Error customId={"supportcode"} error1={Serror}/>
     </div>
   )
 }

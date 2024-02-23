@@ -288,8 +288,8 @@ export const useFetchCountryAndCurrencyCode = (login, login2, loginKey, APiCode)
   const {code, codeLoading, codeError} = useApiFetchingSupportCode(APiCode, loginKey)
   const [countryCurrencyCode, setCountryCurrencyCode] = useState([]) 
 
-	const Error = error ? error : Terror ? Terror :  codeError ? codeError : ""
-	const Loading = loading && Tloading && codeLoading
+	const Serror = error ? error : Terror ? Terror :  codeError ? codeError : ""
+	const SLoading = loading && Tloading && codeLoading
 
   useEffect(() => {
     if(data && TranslatedData && code?.result === "success") {
@@ -325,7 +325,7 @@ export const useFetchCountryAndCurrencyCode = (login, login2, loginKey, APiCode)
     }
   }, [data, code, TranslatedData])
 
-  return  { countryCurrencyCode, Error, Loading }
+  return  { countryCurrencyCode, Serror, SLoading }
 } 
 
 

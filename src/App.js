@@ -17,6 +17,7 @@ import PairConversionIndex from "./Components/Currency/PairConversion/PairConver
 import ExchangeRateIndex from "./Components/Currency/ExchangeRate/ExchangeRateIndex/ExchangeRateIndex";
 import ExchangeRate from "./Components/Currency/ExchangeRate/ExchangeRate";
 import ExchangeRateCountryCurrency from "./Components/Currency/ExchangeRate/ExchangeRateCountryCurrency/ExchangeRateCountryCurrency";
+import NotFound from "./Components/NotFound/NotFound";
 
 const apiUrl1 = process.env.REACT_APP_RESTCOUNTRIES_API_URL;
 const apiUrl2 = process.env.REACT_APP_TRANSLATED_RESTCOUNTRIES_API_URL;
@@ -29,56 +30,56 @@ const App = createBrowserRouter([
 	{
 		path: "/",
 		element: <Home login={apiUrl1} login2={apiUrl2} />,
-		errorElement: <div>Not Found</div>,
+		errorElement: <NotFound />,
 		children: [
 			{
 				index: true,
 				element: <Index />,
-				errorElement: <div>Not Found</div>,
+				errorElement: <NotFound />,
 			},
 			{
 				path: "countries",
 				element: <Countries />,
-				errorElement: <div>Not Found</div>,
+				errorElement: <NotFound />,
 				children: [
 					{
 						index: true,
 						element: <CountiersIndex />,
-						errorElement: <div>Not Found</div>,
+						errorElement: <NotFound />,
 					},
 					{
 						path: "/countries/:countryId",
 						element: <SIngleCountry />,
-						errorElement: <div>Not Found</div>,
+						errorElement: <NotFound />,
 					},
 				],
 			},
 			{
 				path: "regions",
 				element: <Regions />,
-				errorElement: <div>Not Found</div>,
+				errorElement: <NotFound />,
 				children: [
 					{
 						index: true,
 						element: <RegionIndex />,
-						errorElement: <div>Not Found</div>,
+						errorElement: <NotFound />,
 					},
 					{
 						path: "/regions/:regionsId",
 						element: <SingleRegion />,
-						errorElement: <div>Not Found</div>,
+						errorElement: <NotFound />,
 					},
 				],
 			},
 			{
 				path: "population",
 				element: <Population />,
-				errorElement: <div>Not Found</div>,
+				errorElement: <NotFound />,
 				children: [
 					{
 						index: true,
 						element: <PopulationIndex />,
-						errorElement: <div>Not Found</div>,
+						errorElement: <NotFound />,
 					},
 				],
 			},
@@ -92,44 +93,44 @@ const App = createBrowserRouter([
 						APiPair={exchangeRateApiPair}
 					/>
 				),
-				errorElement: <div>Not Found</div>,
+				errorElement: <NotFound />,
 				children: [
 					{
 						index: true,
 						element: <CurrencyInedx />,
-						errorElement: <div>Not Found</div>,
+						errorElement: <NotFound />,
 					},
 					{
 						path: "/currency/supported_code",
 						element: <SupportedCodes />,
-						errorElement: <div>Not Found</div>,
+						errorElement: <NotFound />,
 					},
 					{
 						path: "/currency/exchange_rate",
 						element: <ExchangeRate />,
-						errorElement: <div>Not Found</div>,
+						errorElement: <NotFound />,
 						children: [
 							{
 								index: true,
 								element: <ExchangeRateIndex />,
-								errorElement: <div>Not Found</div>,
+								errorElement: <NotFound />,
 							},
 							{
 								path: "/currency/exchange_rate/:countryId",
 								element: <ExchangeRateCountryCurrency />,
-								errorElement: <div>Not Found</div>,
+								errorElement: <NotFound />,
 							},
 						],
 					},
 					{
 						path: "/currency/pair_conversion",
 						element: <PairConversion />,
-						errorElement: <div>Not Found</div>,
+						errorElement: <NotFound />,
 						children: [
 							{
 								index: true,
 								element: <PairConversionIndex />,
-								errorElement: <div>Not Found</div>,
+								errorElement: <NotFound />,
 							},
 						],
 					},

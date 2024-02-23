@@ -3,13 +3,17 @@ import { NameTags } from './data'
 import { useOutletContext } from 'react-router-dom';
 import ExchangerateList from './ExchangerateList/ExchangerateList';
 import { useFetchCountriesUniqueArrayById } from '../../../sharedComponent/sharedComponent';
+import Error from '../../../Error/Error';
+import Loading from '../../../Loading/Loading';
 
 const ExchangeRateCountryCurrency = () => {
-  const [lang, loginKey, loginUrl, code, countryId, countryCurrencyCode, foundCountry] = useOutletContext();
+  const [lang, loginKey, loginUrl, code, countryId, countryCurrencyCode, foundCountry, SLoading] = useOutletContext();
   const { countries, lastUpdate, nextUpdate, exchangerateLoading, exchangerateError } = useFetchCountriesUniqueArrayById(countryCurrencyCode, countryId, loginUrl, loginKey, code, lang)
   const [searchResult, setSearchResult] = useState([])
   const [arrangeResult, setArrangeResult] = useState([])
   const [finalResult, setFinalResult] = useState([])
+
+  const stillLoading = SLoading && exchangerateLoading
 
   const handleSetSearchResult = (array) => {
     setSearchResult(array)
@@ -60,6 +64,8 @@ const ExchangeRateCountryCurrency = () => {
           handleSetArrangeResult={handleSetArrangeResult}
         />
       </div>
+      <Loading loading={stillLoading}/> 
+      <Error customId={"exchangerate_country_currency"} error1={exchangerateError}/>
     </div>
   )
 }
