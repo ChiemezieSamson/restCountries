@@ -12,12 +12,14 @@ import Loading from '../../Loading/Loading';
 const SupportedCodes = () => {
   const [lang, login, login2, loginKey, APiCode] = useOutletContext();
   // fetching countries base on the available currency fetched from the exchange rate api
-  const { countryCurrencyCode, Serror, SLoading } = useFetchCountryAndCurrencyCode(login, login2, loginKey, APiCode)
+  const { countryCurrencyCode, Serror, SLoading} = useFetchCountryAndCurrencyCode(login, login2, loginKey, APiCode)
   // make sure the countries are arranged alphabetically regardless of the language choosen
   const { ascendingByCountry } = ascendingArrangement(countryCurrencyCode, lang)
   const [searchResult, setSearchResult] = useState([])
   const [arrangeResult, setArrangeResult] = useState([])
   const [finalResult, setFinalResult] = useState([])
+
+  const StopLoading = finalResult.length < 1 && SLoading
 
   // handling setting the input text for the search box
   const handleSetSearchResult = (array) => {
@@ -91,7 +93,7 @@ const SupportedCodes = () => {
       />
 
       {/* loading handling */}
-      <Loading loading={SLoading}/> 
+      <Loading loading={StopLoading}/> 
 
       {/* supported currrencies */}
       <SupportList lang={lang} finalResult={finalResult}/>

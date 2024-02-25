@@ -22,7 +22,7 @@ const Grid = ({countries, count, size, buttonClicked}) => {
   }, [count, size, buttonClicked])
 
   return (
-    <div className='mx-2 px-2'>
+    <div className='mx-2 px-2 pb-32'>
       <ul className={`grid gap-4 xs:grid-cols-2 md:grid-cols-3 list items-center justify-center`}>
         {countries?.map((country, index) => {
           return (

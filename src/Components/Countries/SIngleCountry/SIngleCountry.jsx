@@ -13,7 +13,7 @@ const SIngleCountry = () => {
   const {list} = useSinglePageList(country, lang) // return a list of information with their corresponding item
 
   return (
-    <div className='mb-40'>
+    <div className='pb-32'>
       {/* Country Image and coat of Arms*/}
       <div className='relative isolate after:absolute after:inset-0 after:bg-zinc-950/40 after:backdrop-blur-sm after:backdrop-brightness-125 md:max-h-[80dvh]'>
         <img src={country?.flag?.svg ? country?.flag?.svg : country?.flag?.png} loading="lazy" alt={country?.flag?.alt} className='aspect-video md:max-h-[80dvh]'/>
@@ -44,7 +44,7 @@ const SIngleCountry = () => {
           return (
             <li key={countryInfo.id} className='grid grid-cols-2 sm:grid-cols-5 md:grid-cols-6 gap-5 items-center justify-center'>
               <span className='sm:col-span-2 col-span-2 underline underline-offset-4 sm:no-underline dark:bgLight p-2 shadow-md dark:shadow-slate-50/50 
-                shadow-slate-800/50 tracking-widest transitionEffect backdrop-blur-[1px] dark:backdrop-blur-0'>
+                shadow-slate-800/50 tracking-widest transitionEffect backdrop-blur-[1px] dark:backdrop-blur-0 text-amber-500 dark:text-green-500 font-semibold'>
                   {countryInfo.left} {size > "640" ? ":" : ""} 
                 </span>
 

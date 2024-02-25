@@ -5,7 +5,7 @@ import { populationDataHead } from './data'
 const PopulationBarCharts = ({finalResult, lang}) => {
  
   return (
-    <div className='my-20 px-2 mx-2 overflow-x-scroll touch-pan-x sm:overflow-x-auto'>
+    <div className='pb-32 mt-20 px-2 mx-2 overflow-x-scroll sm:overflow-x-auto'>
 
       <ul className='max-w-6xl min-w-[332px] mx-auto sm:text-center'>
         <li className='hidden sm:grid sm:grid-cols-3 gap-x-3 sm:text-lg lg:text-xl font-poppins font-bold mb-5 capitalize'>

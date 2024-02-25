@@ -13,7 +13,7 @@ const CountiersIndex = () => {
   const [,lang,, width, countries, count, showCount, handleSetCount, handleSetShowCount, handleSetButtonClicked, buttonClicked, handleSetSearchResult,
     handleSetArrangeResult, searchResult, finalResult, loading, Tloading] = useOutletContext();
   const stillLoading = loading && Tloading
-
+  const removeCountrieswithNoName = finalResult?.filter(country => country?.name)
 
   return (
     <div className='pt-14'>
@@ -41,16 +41,16 @@ const CountiersIndex = () => {
         <Search lang={lang} countries={countries} handleSetSearchResult={handleSetSearchResult}/>
       </div>
 
-      <ArrangeMent finalResult={finalResult} searchResult={searchResult} countries={countries} lang={lang} handleSetArrangeResult={handleSetArrangeResult}/>
+      <ArrangeMent finalResult={removeCountrieswithNoName} searchResult={searchResult} countries={countries} lang={lang} handleSetArrangeResult={handleSetArrangeResult}/>
 
       <Loading loading={stillLoading}/> 
 
       {buttonClicked === "list" ?
-        <List count={count} size={width} buttonClicked={buttonClicked} countries={finalResult}/> 
+        <List count={count} size={width} buttonClicked={buttonClicked} countries={removeCountrieswithNoName}/> 
           : buttonClicked === "grid" ?
-        <Grid count={count} size={width} buttonClicked={buttonClicked} countries={finalResult}/>
+        <Grid count={count} size={width} buttonClicked={buttonClicked} countries={removeCountrieswithNoName}/>
           :
-        <Detailed  lang={lang} countries={finalResult}/>
+        <Detailed  lang={lang} countries={removeCountrieswithNoName}/>
       }
     </div>
   )

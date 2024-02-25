@@ -7,7 +7,7 @@ const SupportList = ({finalResult, lang}) => {
   const { filiteredCountry } = useFiliterCountryWithNoCureencyName(finalResult) // make sure that some countries with no currency are not displayed
 
   return (
-    <div className='my-20 px-2 mx-2 overflow-x-scroll touch-pan-x sm:overflow-x-auto'>
+    <div className='mt-20 pb-32 px-2 mx-2 overflow-x-scroll sm:overflow-x-auto'>
     <ul className='max-w-6xl min-w-[340px] mx-auto'>
       
       <li className='hidden sm:grid sm:grid-cols-4 gap-x-3 sm:text-lg lg:text-xl font-poppins font-bold mb-5 capitalize'>

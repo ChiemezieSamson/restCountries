@@ -44,7 +44,7 @@ const ExchangeRateCountryCurrency = () => {
 
 
   return (
-    <div className='mb-40'>
+    <div className='pb-32'>
       <div className='relative isolate after:absolute after:inset-0 after:bg-zinc-950/40 after:backdrop-blur-sm after:backdrop-brightness-125 md:max-h-[80dvh]'>
         <img src={foundCountry?.flag?.svg ? foundCountry?.flag?.svg : foundCountry?.flag?.png} loading="lazy" alt={foundCountry?.flag?.alt} className='aspect-video md:max-h-[80dvh]'/>
         <h1 className='absolute inset-0 grid justify-center items-center z-20 dark_text font-poppins font-extrabold text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl uppercase textShawdo backdrop-blur-[1px]'>

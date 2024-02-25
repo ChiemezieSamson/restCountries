@@ -6,7 +6,7 @@ import { FaLongArrowAltRight } from 'react-icons/fa'
 const Detailed = ({lang, countries}) => {
   
   return (
-    <div className='mx-2 px-2'>
+    <div className='mx-2 px-2 pb-32'>
       <ul className='grid sm:grid-cols-2 lg:grid-cols-3 gap-5 list items-center justify-center'>
         {countries.map((country, index) => {
           return (

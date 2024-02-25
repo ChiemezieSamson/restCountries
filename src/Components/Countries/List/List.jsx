@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 const List = ({countries, count, size, buttonClicked}) => {
+  
 
   // CSS style helping in the increase and decrease of the list when the window size is greater than 1280
   useEffect(() => {
@@ -22,7 +23,7 @@ const List = ({countries, count, size, buttonClicked}) => {
   }, [count, size, buttonClicked])
 
   return (
-    <div className='mx-2 px-2'>
+    <div className='mx-2 px-2 pb-32'>
       <ul className={`grid gap-4 xs:grid-cols-2 sm:grid-cols-3 list`}>
         {countries?.map((country, index) => {
           
@@ -40,10 +41,10 @@ const List = ({countries, count, size, buttonClicked}) => {
               <Link to={`/countries/${country?.id}`} 
                 className='lg:text-lg font-poppins grid items-center justify-center bg-slate-300/300 textLight dark:dark_text font-semibold dark:bgLight p-2 rounded-xl shadow-md dark:shadow-slate-50/50 
                 shadow-slate-800/50 uppercase tracking-widest transitionEffect dark:group-hover:textShawdo'>
-                  <span className='group-hover:backdrop-blur-[5px] dark:group-hover:backdrop-blur-[5px]'>
+                  <div className='group-hover:backdrop-blur-[5px] dark:group-hover:backdrop-blur-[5px] w-full'>
                     {country?.name === undefined ? country?.id?.slice(0, 10) : country?.name?.slice(0, 10)}
                     {country?.name?.length > 10 && "..."}
-                  </span>
+                  </div>
               </Link>
             </li>
           )

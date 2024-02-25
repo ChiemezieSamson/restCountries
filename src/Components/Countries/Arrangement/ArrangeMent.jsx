@@ -65,7 +65,7 @@ const ArrangeMent = ({lang, searchResult, countries, finalResult, handleSetArran
   return (
     <div className='mx-2 px-2 mb-6 grid grid-flow-col justify-between'>
       {/* number of countries displayed */}
-      <p><strong>{total[lang]} :</strong> {finalResult ? finalResult.length : countries.length}</p>
+      <p className='py-px text-nowrap'><strong>{total[lang]} :</strong> {finalResult ? finalResult.length : countries.length}</p>
 
       {/* random and toggle button */}
       <ul className='grid grid-cols-2 gap-x-4 px-2 items-center text-lg font-semibold'>

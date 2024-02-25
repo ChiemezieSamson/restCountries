@@ -7,7 +7,7 @@ const RegionIndex = () => {
   const [lang] = useOutletContext();
 
   return (
-    <div className='py-32 mb-20'>
+    <div className='py-32'>
       <h1 className='headTitle1'>{worldRegions.title[lang]}</h1>
       <h4 className='headSubTitle1'>{worldRegions.sub_title[lang]}</h4>
        

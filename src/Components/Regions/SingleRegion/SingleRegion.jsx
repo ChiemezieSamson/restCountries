@@ -14,7 +14,7 @@ const SingleRegion = () => {
   const { RegionName, OtherRegion } = regionByLanguage(regionsId, lang) // get the the name of the present region and remove it from the rest of the regions
 
   return (
-    <div className='py-32 mb-20'>
+    <div className='py-32'>
       <h1 className='headTitle1'>
         {lang === "en" ? `${singleRegionData.title[lang]} ${RegionName}` : `${RegionName}${singleRegionData.title[lang]}`}
       </h1>
@@ -39,10 +39,10 @@ const SingleRegion = () => {
               <Link to={`/countries/${country?.id}`} 
                 className='lg:text-lg font-poppins grid items-center justify-center bg-slate-300/300 textLight dark:dark_text font-semibold dark:bgLight p-2 rounded-xl shadow-md dark:shadow-slate-50/50 
                 shadow-slate-800/50 uppercase tracking-widest transitionEffect dark:group-hover:textShawdo'>
-                  <span className='group-hover:backdrop-blur-[5px] dark:group-hover:backdrop-blur-[5px]'>
+                  <div className='group-hover:backdrop-blur-[5px] dark:group-hover:backdrop-blur-[5px] w-full'>
                     {country?.name[lang] === undefined ? country?.id?.slice(0, 10) : country?.name[lang]?.slice(0, 10)}
                     {country?.name[lang]?.length > 10 && "..."}
-                  </span>
+                  </div>
               </Link>
             </li>
           )

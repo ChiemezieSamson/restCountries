@@ -28,7 +28,7 @@ const Navigation = ({lang, setIsLanguage, handleCloseSideBar, navBar, toggleNavB
       {/* small screen navbar ellips */}
       <NavBartoggleIcon navBar={navBar} toggleNavBar={toggleNavBar} />
       
-      <div className='grid grid-flow-col gap-x-4 max-w-[135px]'>
+      <div className='grid grid-flow-col items-center justify-center gap-x-4 max-w-[135px]'>
         <DarkModeToggleButton lang={lang} onClick={handleCloseSideBar}/>
         <LanguageToggleButton lang={lang} setIsLanguage={setIsLanguage}/>
       </div>
