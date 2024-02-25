@@ -4,7 +4,7 @@ export const useFetchSingleCountry = (countryId, data, lang, TranslatedData) => 
 	const [country, setCountry] = useState({});
 
 	useEffect(() => {
-		if (data && TranslatedData) {
+		if (data && TranslatedData) { // make sure we have the datas first
 			const TanslatedcountryData = TranslatedData
 			const apiCountry = data.find((foundCountry) => foundCountry?.name?.common?.toLowerCase().trim() === countryId);
 			const TranslateCountry = TanslatedcountryData.find((foundCountry) => foundCountry?.country.toLowerCase().trim() === countryId);

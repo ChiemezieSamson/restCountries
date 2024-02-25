@@ -2,9 +2,9 @@ import React from 'react'
 
 const PairConversionList = ({countries, lang, handlePair, selectValue, handleCloseOpenCountryList}) => {
 
-  const handleSelect = (pair, country) => {
+  const handleSelect = (pair, country) => { // get the currency code and the currency name of any selected country
     handlePair(pair, country)
-    handleCloseOpenCountryList()
+    handleCloseOpenCountryList() // close the box after each click
   }
 
   return (
@@ -13,7 +13,8 @@ const PairConversionList = ({countries, lang, handlePair, selectValue, handleClo
         className='capitalize px-2 font-semibold border-0 focus:border-0 font-poppins py-2 leading-relaxed grid gap-y-3'>
         {countries?.map(country => {
           let setCode 
-          if(country?.id) {
+
+          if(country?.id) { // croatia and sierra leone made a change to their currency which haven't been made on the exchange rate api 
             if (country?.id === "croatia") {
               return setCode = "HRK"
             } 
@@ -24,6 +25,7 @@ const PairConversionList = ({countries, lang, handlePair, selectValue, handleClo
       
             setCode = country?.currency_code
           }
+          
           return (
             <li key={country?.id} id={country?.currency_code} title={country?.name[lang]?.length > 18 ? country?.name[lang] : ""} 
               className={`${selectValue === country?.id ? "dark:bgLight bg-slate-500/30" : ""} cursor-pointer dark:hover:bgLight hover:bg-slate-500/30 transitionEffect`} 

@@ -7,7 +7,9 @@ export const useApiFetchingPairConversion = (loginKey, APiPair, firstPair, secon
 
 	useEffect(() => {
 		const fetchData = async () => {
+
 			if (!APiPair) return;
+
 			try {
 				// Set loading to true when starting the fetch
 				setPairConvertionLoading(true);
@@ -26,8 +28,10 @@ export const useApiFetchingPairConversion = (loginKey, APiPair, firstPair, secon
 				setPairConvertion(result);
 				setPairConvertionLoading(false);
 			} catch (error) {
+
 				console.error("Error fetching data:", error);
 				setPairConvertionError(() => error);
+				
 				// Handle error, set loading to false
 				setPairConvertionLoading(false);
 			}
@@ -66,5 +70,10 @@ export const pairConversionData = {
 		en: "Next Update",
     ko: "다음 업데이트",
     zh: "下次更新"
+	},
+	exchange_rate: {
+		en: "Exchange Rate",
+		ko: "환율",
+		zh: "汇率",
 	}
 }

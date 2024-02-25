@@ -79,7 +79,9 @@ const PopulationSelectionButton = ({lang, handleSetArrangeResult, countries, sea
   return (
     <div className='mx-2 px-2 mb-6 mt-4 grid xs:grid-flow-col gap-y-3 justify-center text-center xs:text-left xs:justify-between'>
       <p><strong>{total[lang]} :</strong> {finalResult ? finalResult.length : countries.length}</p>
+
       <ul className='grid grid-cols-4 max-w-xs gap-x-3 text-lg font-semibold'>
+
         {arrangementIcons.map(button => {
           return (
             <li key={button.id} title={button?.title[lang]}>
@@ -94,6 +96,7 @@ const PopulationSelectionButton = ({lang, handleSetArrangeResult, countries, sea
             </li>
           )
         })}
+        
         <li title={toggleButton ? arrangementIconsToggle[0]?.title[lang] : arrangementIconsToggle[1]?.title[lang]}>
           <button 
             id={toggleButton ? arrangementIconsToggle[0]?.name : arrangementIconsToggle[1]?.name} 

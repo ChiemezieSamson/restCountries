@@ -9,6 +9,7 @@ const CurrencyInedx = () => {
 
   return (
     <div className='pt-32 px-2 mx-2'>
+      {/* Title and sub-title */}
       <div className='mb-20'>
         <h1 className='headTitle1'>
           {Heading.title[lang]}
@@ -26,6 +27,7 @@ const CurrencyInedx = () => {
 
         <div className='p-3 text-left'>
           <h2 className='py-3 mb-2 font-semibold sm:text-lg md:text-xl lg:text-2xl text-balance font-poppins'>{Heading.hero_info.head[lang]}</h2>
+
           <ul className='grid gap-3'>
             {Heading.hero_info.list.map(list => {
               return (
@@ -35,6 +37,7 @@ const CurrencyInedx = () => {
               )
             })}
           </ul>
+
           <p className='mt-10 text-balance font-medium md:text-[17px]'>
             {Heading.hero_info.supportedCode[lang]}
             <Link to="/currency/supported_code" className='hover:text-amber-500 text-lg transitionEffect dark:hover:text-green-500 lineSoft hover:line border rounded-3xl mx-3'>
@@ -47,6 +50,7 @@ const CurrencyInedx = () => {
       <div className='py-52'>
         <h2 className='headTitle1'>{Heading.ExchangeRatePairConversion.title[lang]}</h2>
         <h4 className='headSubTitle1'>{Heading.ExchangeRatePairConversion.sub_title[lang]}</h4>
+        
         <ul className='grid sm:grid-cols-2 gap-4 mt-20 px-5'>
           {ExchangeRatePairConversionCurrencyImage.map(image => {
             return (

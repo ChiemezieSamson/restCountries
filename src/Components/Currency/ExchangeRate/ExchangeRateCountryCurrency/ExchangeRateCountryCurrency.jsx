@@ -8,6 +8,7 @@ import Loading from '../../../Loading/Loading';
 
 const ExchangeRateCountryCurrency = () => {
   const [lang, loginKey, loginUrl, code, countryId, countryCurrencyCode, foundCountry, SLoading] = useOutletContext();
+  // fetch countries while making sure that no countries apppeared twice
   const { countries, lastUpdate, nextUpdate, exchangerateLoading, exchangerateError } = useFetchCountriesUniqueArrayById(countryCurrencyCode, countryId, loginUrl, loginKey, code, lang)
   const [searchResult, setSearchResult] = useState([])
   const [arrangeResult, setArrangeResult] = useState([])
@@ -15,14 +16,19 @@ const ExchangeRateCountryCurrency = () => {
 
   const stillLoading = SLoading && exchangerateLoading
 
+  // handling setting the input text for the search box
   const handleSetSearchResult = (array) => {
     setSearchResult(array)
   }
 
+  // handling how the countries are displayed (eg ascending , descending etc)
   const handleSetArrangeResult = (searchArray) => {
     setArrangeResult(searchArray)
   }
 
+   // setting the final result making sure that once their is a search text
+  // then a search result is need and if an arrange button is clicked an arrange 
+  // button should be dispalyed
   useEffect(() => {
     if(searchResult[0]) {
       setFinalResult(() => [...searchResult].sort((a, b) =>  a.name[lang].toLowerCase().localeCompare(b.name[lang], lang)))
@@ -64,7 +70,11 @@ const ExchangeRateCountryCurrency = () => {
           handleSetArrangeResult={handleSetArrangeResult}
         />
       </div>
+
+      {/* loading handling */}
       <Loading loading={stillLoading}/> 
+
+       {/* Error handling */}
       <Error customId={"exchangerate_country_currency"} error1={exchangerateError}/>
     </div>
   )

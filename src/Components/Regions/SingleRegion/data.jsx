@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import { worldRegionsData } from "../../sharedComponent/sharedComponent";
 
-export const useFetchCountriesByRegion = (regionsId, data, lang) => {
+export const useFetchCountriesByRegion = (regionsId, data, lang) => {// fetching countries by rehion provided in the url
   const [countries, setCountries] = useState([]);
 	
 	useEffect(() => {
+
 		if (data) {
 			let newlist;
+			
 			const CountriesInRegion = data?.filter(
 				(country) =>
 					country?.region?.toLowerCase().trim() === regionsId ||
@@ -37,7 +39,7 @@ export const useFetchCountriesByRegion = (regionsId, data, lang) => {
 	return { countries };
 };
 
-
+ // get the the name of the present region and remove it from the rest of the regions
 export const regionByLanguage = (regionsId, lang) => {
 	const findregion = worldRegionsData.find(region => region?.name?.en?.toLowerCase().trim() === regionsId)
 	const OtherRegion = worldRegionsData.filter(region => region?.name?.en?.toLowerCase().trim() !== regionsId)

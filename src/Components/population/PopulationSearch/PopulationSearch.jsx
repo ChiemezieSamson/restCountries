@@ -13,8 +13,10 @@ const PopulationSearch = ({lang, handleSetSearchResult, sortedArrayDescending}) 
        
         return foundSearch
       })
+
      handleSetSearchResult(() => newList);
     }else {
+      
       handleSetSearchResult(() => []);
     }
   }

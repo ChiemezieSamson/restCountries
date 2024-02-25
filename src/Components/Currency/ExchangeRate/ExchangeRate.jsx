@@ -6,11 +6,12 @@ import Error from '../../Error/Error';
 const ExchangeRate = () => {
   const [lang, login, login2, loginKey, APiCode, loginUrl] = useOutletContext();
   const { countryId } = useParams();
+  // fetching countries base on the available currency fetched from the exchange rate api
   const { countryCurrencyCode, Serror, SLoading } = useFetchCountryAndCurrencyCode(login, login2, loginKey, APiCode)
-  const { foundCountry } = useFetchCountry(countryId, countryCurrencyCode)
+  const { foundCountry } = useFetchCountry(countryId, countryCurrencyCode) // get a single country using the countryId
   const [code , setCode] = useState("USD")
 
-  useEffect(() => {
+  useEffect(() => { // croatia and sierra leone made a change to their currency which haven't been made on the exchange rate api 
     if(countryId) {
       if (countryId === "croatia") {
         setCode(() => "HRK")
@@ -31,6 +32,7 @@ const ExchangeRate = () => {
   return (
     <div>
       <Outlet context={[lang, loginKey, loginUrl, code, countryId, countryCurrencyCode, foundCountry, SLoading]}/>
+       {/* Error handling */}
       <Error customId={"exchangerate"} error1={Serror}/>
     </div>
   )

@@ -8,12 +8,13 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 const SIngleCountry = () => {
   const { countryId } = useParams();
   const [data, lang, TranslatedData] = useOutletContext();
-  const {country} = useFetchSingleCountry(countryId, data, lang, TranslatedData)
+  const {country} = useFetchSingleCountry(countryId, data, lang, TranslatedData) // fetching a single country using the countryId
   const size = useWindowSize().width
-  const {list} = useSinglePageList(country, lang)
+  const {list} = useSinglePageList(country, lang) // return a list of information with their corresponding item
 
   return (
     <div className='mb-40'>
+      {/* Country Image and coat of Arms*/}
       <div className='relative isolate after:absolute after:inset-0 after:bg-zinc-950/40 after:backdrop-blur-sm after:backdrop-brightness-125 md:max-h-[80dvh]'>
         <img src={country?.flag?.svg ? country?.flag?.svg : country?.flag?.png} loading="lazy" alt={country?.flag?.alt} className='aspect-video md:max-h-[80dvh]'/>
         <h1 className='absolute inset-0 grid justify-center items-center z-20 dark_text font-poppins font-extrabold text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl uppercase'>
@@ -36,7 +37,8 @@ const SIngleCountry = () => {
           </div>
         }
       </div>
-
+      
+      {/* List of country info */}
       <ul className={`${country?.coatOfArms?.svg || country?.coatOfArms?.png ? "md:mt-80" : "md:mt-40"} mt-40 grid gap-5 max-w-4xl mx-auto px-4 lg:text-lg font-poppins bg-slate-300/300 textLight dark:dark_text font-semibold capitalize`}>
         {list?.map((countryInfo) => {
           return (

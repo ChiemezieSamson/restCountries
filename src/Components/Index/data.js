@@ -13,9 +13,10 @@ export const Indexdata = {
 		ko: "세계의 경이로움을 발견하다",
 	},
 	text: {
-		en: "Embark on a journey to explore fascinating details about countries around the globe. From historical landmarks to cultural richness, our web app brings the world to your fingertips.",
-		zh: "踏上一场探索之旅，发现全球各国的引人入胜的细节。从历史地标到文化丰富，我们的网络应用将世界带到您的指尖。",
-		ko: "세계 각지의 국가에 관한 매혹적인 세부 사항을 탐험하는 여행에 참여하세요. 역사적인 명소부터 문화적 풍부함까지, 우리의 웹 앱은 세계를 당신의 손끝으로 가져옵니다.",
+		en: `Embark on an enriching journey to explore captivating details about countries worldwide. Our web application is your gateway to discovering a wealth of information, 
+				from historical landmarks and cultural highlights to population statistics and real-time currency exchange rates. Immerse yourself in the diverse tapestry of the globe, as our platform effortlessly brings the world's wonders to your fingertips, providing a comprehensive and engaging experience.`,
+		zh: "踏上探索世界各国迷人细节的旅程。从历史地标到人口统计和实时汇率，我们的网络应用为您提供了一个探索世界的通道，将丰富的信息展现在您的指尖。",
+		ko: "세계 각국의 매혹적인 세부사항을 탐험하는 여정에 참여하세요. 역사적인 명소부터 인구 통계 및 환율까지, 저희 웹 애플리케이션은 세계를 당신의 손끝에 가져옵니다.",
 	},
 	button_text: {
 		en: "Explore Now",

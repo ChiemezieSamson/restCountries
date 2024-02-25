@@ -5,17 +5,19 @@ import { placeHolder, searchByData } from './data'
 const Search = ({lang, handleSetSearchResult, countries}) => {
   const [searcByOption, setSearcByOption] = useState("name")
 
-  const handleSetSearcByOption = (event) => {
+  const handleSetSearcByOption = (event) => { // handling the selection of search "By"
     const searchByValue = event.target.value
     setSearcByOption(() => searchByValue);
   }
 
+  //handling getting and setting input values
   const handleInputValues = (event) => {
     const inputValue = event.target.value?.toLowerCase()?.trim()
     
     
-    if (inputValue !== "") {// Using a regular expression to check if the value contains only letters
-      if (searcByOption === "name") {
+    if (inputValue !== "") {//make sure we are not gettin an empty sting
+
+      if (searcByOption === "name") { // search by name
        const newList = countries.filter(countries => {
 
         const foundSearch =  countries?.name?.startsWith(inputValue) || countries?.name === inputValue || countries?.name?.split(" ")[1]?.startsWith(inputValue)
@@ -25,18 +27,21 @@ const Search = ({lang, handleSetSearchResult, countries}) => {
        handleSetSearchResult(() => newList);
       }
 
-      if(searcByOption === "capital") {
+      if(searcByOption === "capital") { // search by capital
         const newList = countries.filter(countries => countries?.capital?.startsWith(inputValue) || countries?.capital === inputValue)
+
         handleSetSearchResult(() => newList);
       }
 
-      if(searcByOption === "continets") {
+      if(searcByOption === "continets") { // search by continets
         const newList = countries.filter(countries => countries?.continents?.startsWith(inputValue) || countries?.continents === inputValue)
+
         handleSetSearchResult(() => newList);
       }
 
-      if(searcByOption === "language") {
+      if(searcByOption === "language") {// search by language
         const newList = countries.filter(countries => countries?.language?.startsWith(inputValue) || countries?.language === inputValue)
+
         handleSetSearchResult(() => newList);
       }
     } else {

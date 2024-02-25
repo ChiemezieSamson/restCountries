@@ -7,7 +7,7 @@ const ArrangeMent = ({lang, searchResult, countries, finalResult, handleSetArran
   const [sortLastArrangment, setsortLastArrangment] = useState("")
   const [toggleButton, setToggleButton] = useState(false)
 
-  const handlerandom = (event) => {
+  const handlerandom = (event) => { // handling setting the random button
     const IconName = event.target.id
     
     // set to random order
@@ -18,23 +18,27 @@ const ArrangeMent = ({lang, searchResult, countries, finalResult, handleSetArran
     }
 
     if (clickIcon !== IconName) {
+
       setClickedIcon(() => IconName)  
     } else {
+
       setClickedIcon(() => sortLastArrangment)
       setToggleButton(() => toggleButton)
 
       // making sure users are returned to their last arrangment before moving to random
       if (sortLastArrangment === "ascend") {
+
         const ascendingByCountry = [...countries].sort((a, b) =>  a.name.toLowerCase().localeCompare(b.name, lang))
         handleSetArrangeResult(() => ascendingByCountry)
       } else {
+
         const descendingByCountry = [...countries].sort((a, b) =>  b.name.toLowerCase().localeCompare(a.name, lang))
         handleSetArrangeResult(() => descendingByCountry)
       }
     }
   }
 
-  const handleSetToggleButton = (event) => {
+  const handleSetToggleButton = (event) => { // handling toggle button
     const IconName = event.target.id
 
     // set to ascending order
@@ -60,9 +64,10 @@ const ArrangeMent = ({lang, searchResult, countries, finalResult, handleSetArran
   
   return (
     <div className='mx-2 px-2 mb-6 grid grid-flow-col justify-between'>
+      {/* number of countries displayed */}
       <p><strong>{total[lang]} :</strong> {finalResult ? finalResult.length : countries.length}</p>
 
-
+      {/* random and toggle button */}
       <ul className='grid grid-cols-2 gap-x-4 px-2 items-center text-lg font-semibold'>
         <li title={arrangementIcons[0]?.title[lang]}>
           <button 
@@ -75,6 +80,7 @@ const ArrangeMent = ({lang, searchResult, countries, finalResult, handleSetArran
           </button>
         </li>
        
+       {/* country list */}
         <li title={toggleButton ? arrangementIcons[2]?.title[lang] : arrangementIcons[1]?.title[lang]}>
           <button 
             id={toggleButton ? arrangementIcons[2]?.name : arrangementIcons[1]?.name} 

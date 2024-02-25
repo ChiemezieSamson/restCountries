@@ -8,6 +8,7 @@ export const DarkModeToggleButton = ({lang}) => {
 
   useEffect(() => {
     const savedMode = localStorage.getItem("darkMode");
+
     if (savedMode === "true") {
       setIsDarkMode(true);
       document.documentElement.classList.add("dark");
@@ -15,8 +16,10 @@ export const DarkModeToggleButton = ({lang}) => {
   }, []);
 
   const toggleDarkMode = () => {
+
     setIsDarkMode((prevMode) => {
       const newMode = !prevMode;
+      
       if (newMode) {
         localStorage.setItem("darkMode", "true");
       } else {

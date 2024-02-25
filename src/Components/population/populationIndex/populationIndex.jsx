@@ -10,21 +10,26 @@ import Loading from '../../Loading/Loading';
 
 const PopulationIndex = () => {
   const [lang, login] = useOutletContext();
+  // fetching the countries from rest countries api
   const { data, loading, error } = useApiFetchingComponent(login)
-  const { countries } = useFetchNameAndPopulation(data)
+  const { countries } = useFetchNameAndPopulation(data) // fetching the countries from rest countries api adding population percentage
   const [searchResult, setSearchResult] = useState([])
   const [arrangeResult, setArrangeResult] = useState([])
   const [finalResult, setFinalResult] = useState([])
 
-
+  // handling setting the input text for the search box
   const handleSetSearchResult = (array) => {
     setSearchResult(array)
   }
 
+  // handling how the countries are displayed (eg ascending , descending etc)
   const handleSetArrangeResult = (searchArray) => {
     setArrangeResult(searchArray)
   }
 
+  // setting the final result making sure that once their is a search text
+  // then a search result is need and if an arrange button is clicked an arrange 
+  // button should be dispalyed
   useEffect(() => {
     if(searchResult[0]) {
       setFinalResult(() => [...searchResult].sort((a, b) =>  a.name[lang].toLowerCase().localeCompare(b.name[lang], lang)))
@@ -55,6 +60,7 @@ const PopulationIndex = () => {
   
   return (
     <div className='pt-32'>
+      {/* Title and sub-title */}
       <div className='mb-20'>
         <h1 className='headTitle1'>
           {Heading.title[lang]}
@@ -63,11 +69,15 @@ const PopulationIndex = () => {
           {Heading.sub_title[lang]}
         </h4>
       </div>
+
+      {/* search */}
       <PopulationSearch 
         lang={lang}
         handleSetSearchResult={handleSetSearchResult}
         sortedArrayDescending={countries}  
       />
+
+      {/* Toggle buttons */}
       <PopulationSelectionButton
         lang={lang}
         handleSetArrangeResult={handleSetArrangeResult}
@@ -76,12 +86,16 @@ const PopulationIndex = () => {
         finalResult={finalResult}
       />
 
+      {/* loading handling */}
       <Loading loading={loading}/> 
 
+      {/* Population lists */}
       <PopulationBarCharts 
         lang={lang}
         finalResult={finalResult}
       />
+
+      {/* Error handling */}
       <Error customId={"populationIndex"} error1={error}/>
     </div>
   )

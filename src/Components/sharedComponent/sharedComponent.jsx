@@ -10,15 +10,17 @@ import SouthAmerica from "./../asset/images/south-america-icon.png";
 import Caribbean from "./../asset/images/carribbean-icon.png";
 import { Link } from "react-router-dom";
 
-
+// fetching the main data from the rest countries API
 export const useApiFetchingComponent = (login) => {
 	const [data, setData] = useState(null);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
 
 	useEffect(() => {
+
 		const fetchData = async () => {
 			if (!login) return;
+
 			try {
 				// Set loading to true when starting the fetch
 				setLoading(true);
@@ -31,6 +33,7 @@ export const useApiFetchingComponent = (login) => {
 				setData(result);
 				setLoading(false);
 			} catch (error) {
+
 				console.error("Error fetching data:", error);
 				setError(() => error);
 				// Handle error, set loading to false
@@ -45,14 +48,17 @@ export const useApiFetchingComponent = (login) => {
 	return { data, loading, error };
 };
 
+// fetching the main data from the Korean and Chinese translated API
 export const useApiFetchingTranslatedData = (login2) => {
 	const [TranslatedData, setTranslatedData] = useState(null);
 	const [Tloading, setTLoading] = useState(true);
 	const [Terror, setTError] = useState(null);
 
 	useEffect(() => {
+
 		const fetchData = async () => {
 			if (!login2) return;
+
 			try {
 				// Set loading to true when starting the fetch
 				setTLoading(true);
@@ -65,6 +71,7 @@ export const useApiFetchingTranslatedData = (login2) => {
 				setTranslatedData(result);
 				setTLoading(false);
 			} catch (error) {
+
 				console.error("Error fetching data:", error);
 				setTError(() => error);
 				// Handle error, set loading to false
@@ -79,15 +86,17 @@ export const useApiFetchingTranslatedData = (login2) => {
 	return { TranslatedData, Tloading, Terror };
 };
 
-
+// fetching the main data from the Exchangerate API
 export const useApiFetchingExchangeRate = (loginUrl, loginKey, code) => {
 	const [exchangerate, setExchangerate] = useState(null);
 	const [exchangerateLoading, setExchangerateLoading] = useState(true);
 	const [exchangerateError, setExchangerateError] = useState(null);
 
 	useEffect(() => {
+
 		const fetchData = async () => {
 			if (!loginUrl) return;
+
 			try {
 				// Set loading to true when starting the fetch
 				setExchangerateLoading(true);
@@ -100,12 +109,14 @@ export const useApiFetchingExchangeRate = (loginUrl, loginKey, code) => {
             'Content-Type': 'application/json',
           },
         });
+
 				const result = await response.json();
 
 				// Set the fetched data and loading to false
 				setExchangerate(result);
 				setExchangerateLoading(false);
 			} catch (error) {
+
 				console.error("Error fetching data:", error);
 				setExchangerateError(() => error);
 				// Handle error, set loading to false
@@ -120,7 +131,7 @@ export const useApiFetchingExchangeRate = (loginUrl, loginKey, code) => {
 	return { exchangerate, exchangerateLoading, exchangerateError };
 };
 
-
+// The world region images english and translated names
 export const worldRegionsData = [
 	{
 		id: 0,
@@ -214,14 +225,14 @@ export const worldRegionsData = [
 	},
 ];
 
-
+// translation of the total cuountries count
 export const total = {
 	en: "Total Countries",
 	zh: "总国家",
 	ko: "총 국가",
 };
 
-
+// component displaying the world region images and names
 export const RegionListComponent = ({region, lang}) => {
 	return (
 		<ul className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-5 mt-20 items-center justify-center'>
@@ -241,14 +252,17 @@ export const RegionListComponent = ({region, lang}) => {
 	)
 }
 
+// fetching the exchangeRate api supportted currency code
 export const useApiFetchingSupportCode = (login, apiToken) => {
 	const [code, setCode] = useState(null);
 	const [codeLoading, setCodeLoading] = useState(true);
 	const [codeError, setCodeError] = useState(null);
 
 	useEffect(() => {
+
 		const fetchData = async () => {
 			if (!login) return;
+
 			try {
 				// Set loading to true when starting the fetch
 				setCodeLoading(true);
@@ -261,12 +275,14 @@ export const useApiFetchingSupportCode = (login, apiToken) => {
             'Content-Type': 'application/json',
           },
         });
+
 				const result = await response.json();
 
 				// Set the fetched data and loading to false
 				setCode(result);
 				setCodeLoading(false);
 			} catch (error) {
+
 				console.error("Error fetching data:", error);
 				setCodeError(() => error);
 				// Handle error, set loading to false
@@ -281,7 +297,7 @@ export const useApiFetchingSupportCode = (login, apiToken) => {
 	return { code, codeLoading, codeError };
 };
 
-
+// margging the countries from restCountries API with their currency code
 export const useFetchCountryAndCurrencyCode = (login, login2, loginKey, APiCode) => {
   const { data, loading, error } = useApiFetchingComponent(login)
   const { TranslatedData, Tloading, Terror } = useApiFetchingTranslatedData(login2)
@@ -292,6 +308,7 @@ export const useFetchCountryAndCurrencyCode = (login, login2, loginKey, APiCode)
 	const SLoading = loading && Tloading && codeLoading
 
   useEffect(() => {
+
     if(data && TranslatedData && code?.result === "success") {
       let newList = []
   
@@ -328,25 +345,29 @@ export const useFetchCountryAndCurrencyCode = (login, login2, loginKey, APiCode)
   return  { countryCurrencyCode, Serror, SLoading }
 } 
 
-
+// Removal of the countries with no currency name, code or symbol
 export const useFiliterCountryWithNoCureencyName = (countries) => {
 	const filiteredCountry = countries.filter(country => country?.currency_code !== "")
 
 	return { filiteredCountry }
 }
 
-
+// margging a country from restCountries API using countryId with their possible exchange rate for every other countries
 export const useFetchCountryWithExchangeRate = (countryCurrencyCode, countryId, loginUrl, loginKey, code, lang, firstCountryName) => {
   const { exchangerate, exchangerateLoading, exchangerateError } = useApiFetchingExchangeRate(loginUrl, loginKey, code)
   const [countriesRate, setCountriesRate] = useState([])
 	const lastUpdatedateString  = exchangerate ? exchangerate?.time_last_update_utc : ""
 	const nextUpdatedateString  = exchangerate ? exchangerate?.time_next_update_utc : ""
+
+	// coverting the string utc date last update to readable strings
 	const lastUpdate = new Date(lastUpdatedateString).toLocaleString(lang, {
 		weekday: 'long',
 		day: 'numeric',
 		month: 'long',
 		year: 'numeric',
 	});
+
+	// coverting the string utc date next update to readable strings
 	const nextUpdate = new Date(nextUpdatedateString).toLocaleString(lang, {
 		weekday: 'long',
 		day: 'numeric',
@@ -387,10 +408,11 @@ export const useFetchCountryWithExchangeRate = (countryCurrencyCode, countryId, 
   return { countriesRate, lastUpdate, nextUpdate, exchangerateLoading, exchangerateError }
 }
 
-
+// making sure no country appeared two times in the array
 export const useFetchCountriesUniqueArrayById = (countryCurrencyCode, countryId, loginUrl, loginKey, code, lang, firstCountryName) => {
 	const { countriesRate, lastUpdate, nextUpdate, exchangerateLoading, exchangerateError } = useFetchCountryWithExchangeRate(countryCurrencyCode, countryId, loginUrl, loginKey, code, lang, firstCountryName)
 	const { filiteredCountry } = useFiliterCountryWithNoCureencyName(countriesRate)
+
   const uniqueArrayById = filiteredCountry.filter((obj, index, self) =>
     index === self.findIndex((o) => o.id === obj.id)
   );
@@ -398,7 +420,7 @@ export const useFetchCountriesUniqueArrayById = (countryCurrencyCode, countryId,
 	return {countries: uniqueArrayById, lastUpdate, nextUpdate, exchangerateLoading, exchangerateError}
 }
 
-
+// finding one country from all available countries using the countryId
 export const useFetchCountry = (countryId, countryCurrencyCode) => {
   const search = countryId ? countryId : "united states"
   const foundCountry = countryCurrencyCode.find(country => country.id === search)

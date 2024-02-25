@@ -3,6 +3,8 @@ import { selectionButton } from './data'
 
 const SelectionButton = ({showCount, count, handleSetCount, handleSetShowCount, width, lang, handleSetButtonClicked, buttonClicked}) => {
   const [displayType, setDisplayType] = useState(null)
+
+  // handling setting numbers of columes selected
   const action = (num) => {
     if (count < num) {
       if(count === 0) {
@@ -22,7 +24,7 @@ const onClick = (event) => {
   const ID = event.target.id
   setDisplayType(() => ID)
 
-  if(ID === "0") {    
+  if(ID === "0") { // if list is clicked   
     if (buttonClicked !== "list") {
       if (width >  1280) {
         action(2)
@@ -35,7 +37,7 @@ const onClick = (event) => {
     }
   }
 
-  if(ID === "1") {   
+  if(ID === "1") { // if grid is clicked
     if(buttonClicked !== "grid") {
       if (width >  1280) {
         action(2)
@@ -48,7 +50,7 @@ const onClick = (event) => {
     }
   }
 
-  if(ID === "2") {
+  if(ID === "2") { // if detailed is clicked
     if(buttonClicked !== "detailed") {
       action(2)
       handleSetButtonClicked("detailed")

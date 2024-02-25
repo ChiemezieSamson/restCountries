@@ -44,6 +44,10 @@
   option {
     @apply textLight inline-block
   }
+
+  ::-webkit-scrollbar {
+    @apply w-[0.01px]
+  }
 }
 
 @layer utilities{

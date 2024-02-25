@@ -10,6 +10,7 @@ const Search = ({countries, lang, handleSetSearchResult}) => {
     if (inputValue !== "") {
        const newList = countries.filter(country => {
         let foundSearch 
+        
         const byCountryName = country?.name[lang]?.toLowerCase()?.startsWith(inputValue) || country?.name[lang]?.toLowerCase() === inputValue?.toLowerCase()?.trim() || country?.name[lang]?.toLowerCase()?.split(" ")[1]?.startsWith(inputValue)
         const byCurrencyName = country?.currency_name[lang]?.toLowerCase()?.startsWith(inputValue) || country?.currency_name[lang]?.toLowerCase() === inputValue?.toLowerCase()?.trim() || country?.currency_name[lang]?.toLowerCase()?.split(" ")[1]?.startsWith(inputValue)
         const byCurrencyCode = country?.currency_code?.toLowerCase()?.startsWith(inputValue) || country?.currency_code?.toLowerCase() === inputValue?.toLowerCase()?.trim()

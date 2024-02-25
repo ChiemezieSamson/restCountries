@@ -3,10 +3,12 @@ import { useEffect, useState } from "react";
 export const useFetchNameAndPopulation = (data) => {
   const [countries, setCountries] = useState([]);
 
-  useEffect(() => {
+  useEffect(() => {// fetching the countries from rest countries api adding population percentage
+
     if(data) {
       const totalPopulation = data.reduce((acc, country) => acc + country?.population, 0);
       let newlist;
+
       const allCountries = data?.map(country => {
 
         newlist = {

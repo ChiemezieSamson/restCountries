@@ -5,12 +5,14 @@ import { worldRegionsData } from '../../sharedComponent/sharedComponent';
 
 const RegionIndex = () => {
   const [lang] = useOutletContext();
+
   return (
     <div className='py-32 mb-20'>
       <h1 className='headTitle1'>{worldRegions.title[lang]}</h1>
       <h4 className='headSubTitle1'>{worldRegions.sub_title[lang]}</h4>
        
        <ul className='grid sm:grid-cols-2 lg:grid-cols-3 mt-20 gap-8 px-4'>
+        
         {worldRegionsData.map(region => {
           return (
             <li key={region.id} className='lg:text-lg hover:scale-105 focus-within:scale-110 transitionEffect bg-slate-300/300 textLight dark:dark_text font-semibold dark:bgLight rounded-xl shadow-md dark:shadow-slate-50/50 

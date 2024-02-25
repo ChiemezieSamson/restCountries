@@ -8,9 +8,10 @@ import Loading from '../../Loading/Loading';
 const SingleRegion = () => {
   const [lang, login] = useOutletContext();
   const { regionsId } = useParams();
+  // fetching the countries from rest countries api
   const { data, loading, error } = useApiFetchingComponent(login)
-  const {countries} = useFetchCountriesByRegion(regionsId, data, lang)
-  const { RegionName, OtherRegion } = regionByLanguage(regionsId, lang)
+  const {countries} = useFetchCountriesByRegion(regionsId, data, lang) // fetching countries by rehion provided in the url
+  const { RegionName, OtherRegion } = regionByLanguage(regionsId, lang) // get the the name of the present region and remove it from the rest of the regions
 
   return (
     <div className='py-32 mb-20'>
@@ -19,6 +20,7 @@ const SingleRegion = () => {
       </h1>
       <h4 className='headSubTitle1'><strong>{total[lang]} :</strong> {countries ? countries.length : 0}</h4>
 
+      {/* loading handling */}
       <Loading loading={loading}/>
 
       <ul className='mt-20 px-4 gap-4 grid xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5'>
@@ -51,7 +53,9 @@ const SingleRegion = () => {
         <p className='font-semibold'><strong>{singleRegionData.others[lang]}:</strong></p>
 
         <RegionListComponent region={OtherRegion} lang={lang}/>
-      </div>      
+      </div>  
+
+      {/* Error handling */}    
       <Error customId={"singleregion"} error1={error}/>
     </div>
   )

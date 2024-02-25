@@ -10,10 +10,13 @@ const Home = ({login, login2}) => {
   const languageMode = localStorage.getItem("Language");
   const size = useWindowSize();
 
+  // handling the selection of languages
   const handleSetLanguage = (text) => {
     setIsLanguage(() => text)
   }
 
+  // founction for the Ellip button that opens on close 
+  // the navbar on small screen
   const toggleNavBar = () => {
 		setNavBar((change) => !change);
 	};
@@ -31,15 +34,20 @@ const Home = ({login, login2}) => {
 		}
 	}, [size]);
 
+  // handling updating the users language selection when the page loads
+  // for the first time and when language changes
   useEffect(() => {
     if (languageMode) {
       setIsLanguage( () => languageMode);
       document.documentElement.setAttribute('lang', languageMode);
     } 
   }, [languageMode]);
+
   return (
     <div className='relative'>
-      <div className='dark:dark_bgSoft bgLightSoft fixed inset-x-0 z-50'>
+
+      {/* Navigation Bar and links */}
+      <header className='dark:dark_bgSoft bgLightSoft fixed inset-x-0 z-50'>
         <Navigation 
           lang={isLanguage}
           navBar={navBar}
@@ -47,31 +55,33 @@ const Home = ({login, login2}) => {
 					handleCloseSideBar={handleCloseSideBar} 
           setIsLanguage={handleSetLanguage}
         />
-      </div>
+      </header>
 
+      {/* Main body*/}
       <main className='max-w-7xl mx-auto' onClick={handleCloseSideBar}>
-        <div className=''>
-          <Outlet context={[isLanguage, login, login2]} />
-        </div>
 
+        {/* Main childrens */}  
+        <Outlet context={[isLanguage, login, login2]} />
 
-      {/* === scroll back to lasts position on page refresh === */}
-      <ScrollRestoration 
-        getKey={(location, matches) => {
-          const paths = ["/", "/regions/"];
-          return paths.includes(location.pathname)
-            ? // home and notifications restore by pathname
-              location.pathname
-            : // everything else by location like the browser
-              location.key;
-        }}
+        {/* === scroll back to lasts position on page refresh === */}
+        <ScrollRestoration 
+          getKey={(location, matches) => {
+            const paths = ["/", "/regions/"];
+            return paths.includes(location.pathname)
+              ? // home and notifications restore by pathname
+                location.pathname
+              : // everything else by location like the browser
+                location.key;
+          }}
         />   
 
+        {/* Move back to top onClick */}
         <TotheTop />
       </main>   
 
-      <footer onClick={handleCloseSideBar}>
-
+      {/* Footer */}
+      <footer onClick={handleCloseSideBar} className="absolute bottom-0 inset-x-0 grid items-center justify-center py-1">
+        <small>copyright &copy; 2022 by Nebe.Samson</small>
       </footer>
     </div>
   )

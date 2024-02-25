@@ -84,6 +84,7 @@ const ExchangeRateSlectionButton = ({searchResult, finalResult, lang, countriesR
   return (
     <div className='mx-2 px-2 mb-6 mt-4 grid sm:grid-flow-col gap-y-3 justify-center text-center sm:text-left sm:justify-between'>
       <p><strong>{total[lang]} :</strong> {finalResult ? finalResult.length : countriesRate.length}</p>
+
       <ul className='grid grid-cols-5 max-w-xs gap-x-3 text-lg font-semibold'>
         {arrangementIcons.map(button => {
           return (
@@ -99,6 +100,7 @@ const ExchangeRateSlectionButton = ({searchResult, finalResult, lang, countriesR
             </li>
           )
         })}
+
         <li title={toggleButton ? arrangementIconsToggle[0]?.title[lang] : arrangementIconsToggle[1]?.title[lang]}>
           <button 
             id={toggleButton ? arrangementIconsToggle[0]?.name : arrangementIconsToggle[1]?.name} 
@@ -109,6 +111,7 @@ const ExchangeRateSlectionButton = ({searchResult, finalResult, lang, countriesR
             {toggleButton ? arrangementIconsToggle[0]?.icon : arrangementIconsToggle[1]?.icon}
           </button>
         </li>
+        
         <li title={Reset[lang]}>
           <button 
             className='line border px-4 rounded-xl hover:lineSoft hover:bgObject transitionEffect relative isolate after:absolute after:inset-0 after:rounded-xl after:border after:border-transparent'

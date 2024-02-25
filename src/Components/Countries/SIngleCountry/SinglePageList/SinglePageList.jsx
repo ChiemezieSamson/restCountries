@@ -5,7 +5,7 @@ export const useSinglePageList = (country, lang) => {
   const [convertedTimes, setConvertedTimes] = useState([]);
   let list 
 
-  useEffect(() => {
+  useEffect(() => { // conversion of time zones
 
     if (country) {
       const timeZones = country?.timezones ? country?.timezones : []
@@ -33,7 +33,7 @@ export const useSinglePageList = (country, lang) => {
   if (country) {
 
 
-    list = [
+    list = [ 
       {
         id: 0,
         left: SinglePageText.commonName[lang],

@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 const TotheTop = () => {
   const [top, setTop] = useState("")
 
+  // make sure to display once the user scroll pass 850px
+  // of the window hieght
   const scrollFunction = () => {
     if (
       window.scrollY > 850
@@ -14,6 +16,7 @@ const TotheTop = () => {
     }
   }
 
+  // handling founction call on window action
   useEffect(() => {
     const watchScroll = () => {
       window.addEventListener("scroll", scrollFunction)

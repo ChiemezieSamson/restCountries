@@ -2,8 +2,10 @@ import React, { useState } from 'react'
 import { arrangementIconsToggle, descendingArrangement } from './data'
 
 const ToggleButton = ({searchResult, lang, ascendingByCountry, handleSetArrangeResult, countryCurrencyCode}) => {
-  const { descendingByCountry } = descendingArrangement(countryCurrencyCode, lang)
+  const { descendingByCountry } = descendingArrangement(countryCurrencyCode, lang) // arranging the countries from z to A alphabetically
   const [clickIcon, setClickedIcon] = useState("ascend")
+
+  // handling toggle alphabetically
   const handleSetToggleButton = (event) => {
     const IconName = event.target.id
 
@@ -23,6 +25,7 @@ const ToggleButton = ({searchResult, lang, ascendingByCountry, handleSetArrangeR
       setClickedIcon(() => "descend")
     }
   }
+  
   return (
     <div title={clickIcon === "ascend" ? arrangementIconsToggle[0]?.title[lang] : arrangementIconsToggle[1]?.title[lang]} className='mt-4 mx-3'>
       <button 

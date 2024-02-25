@@ -2,19 +2,18 @@ import { useEffect, useState } from "react";
 
 export const useDetailedCountriesName = (data, TranslatedData, lang, language) => {
 	const [countries, setCountries] = useState([]);
+
 	// For each country get its Korean "ko" or Chinese name accordly
 	useEffect(() => {
-		if (data && TranslatedData) {
+		if (data && TranslatedData) {// make sure the array of countries is present
 			const TanslatedcountriesData = TranslatedData
-			// make sure the array of countries is present
 			let translateID = [];
 
 			const allCountries = data?.map((country) => {
 				let newList;
 
-				if (lang === "ko") {
-					translateID = [];
-					// if language choice is korean
+				if (lang === "ko") {// if language choice is korean
+					translateID = [];					
 
 					if (country?.translations?.[language]) {
 						// making sure that we are not getting the undefined object
@@ -42,9 +41,9 @@ export const useDetailedCountriesName = (data, TranslatedData, lang, language) =
 					}
 				}
 
-				if (lang === "zh") {
+				if (lang === "zh") {// if language choice is chinese
 					translateID = [];
-					// if language choice is chinese
+					
 					translateID.push({ id: country?.name?.common });
 					translateID.map((ChineseTranscountry) => {
 						const Translation = TanslatedcountriesData.find(

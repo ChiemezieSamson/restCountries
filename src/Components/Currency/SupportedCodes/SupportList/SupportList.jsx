@@ -4,16 +4,19 @@ import { Link } from 'react-router-dom'
 import { useFiliterCountryWithNoCureencyName } from '../../../sharedComponent/sharedComponent'
 
 const SupportList = ({finalResult, lang}) => {
-  const { filiteredCountry } = useFiliterCountryWithNoCureencyName(finalResult)
+  const { filiteredCountry } = useFiliterCountryWithNoCureencyName(finalResult) // make sure that some countries with no currency are not displayed
+
   return (
     <div className='my-20 px-2 mx-2 overflow-x-scroll touch-pan-x sm:overflow-x-auto'>
     <ul className='max-w-6xl min-w-[340px] mx-auto'>
+      
       <li className='hidden sm:grid sm:grid-cols-4 gap-x-3 sm:text-lg lg:text-xl font-poppins font-bold mb-5 capitalize'>
         <span>{Heading.country[lang]}</span>
         <span>{Heading.currency_name[lang]}</span>
         <span className='block text-left'>{Heading.currency_code[lang]}</span>
         <span>{Heading.currency_symbol[lang]}</span>
       </li>
+
       {filiteredCountry?.map(country => {
         
         return (

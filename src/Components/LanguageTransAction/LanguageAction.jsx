@@ -2,6 +2,7 @@ import { BsTranslate } from "react-icons/bs";
 import { iconData, languages } from "./data";
 
 export const LanguageToggleButton = ({lang, setIsLanguage}) => {
+  
   const toggleLanguage = (event) => {
     const value = event.target.value
    

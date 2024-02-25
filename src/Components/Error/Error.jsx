@@ -4,8 +4,10 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 const Error = ({customId, error1, error2}) => {
-  
+
+// using toastify to notify error if any
 useEffect(() => {
+
   const notify = (error) => {
     toast.error(`Wow so easy ! ${error}`, {
       position: "top-center",

@@ -1,4 +1,5 @@
 export const sortedByhigHestPopulation = (countries) => {
+  
   const sortedArrayDescending = countries.slice().sort((a, b) => {
     const populationA = parseInt(a?.population, 10);
     const populationB = parseInt(b?.population, 10);

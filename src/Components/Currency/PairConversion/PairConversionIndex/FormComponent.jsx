@@ -6,9 +6,9 @@ import { useFetchCountry } from '../../../sharedComponent/sharedComponent'
 
 const FormComponent = ({lang, countries, selectValue, amount, inputValue, handlePair, getinputValue, isSearching, idName}) => {
   const [openCountryList, setOpenCountryList] = useState(false)
-  const { foundCountry } = useFetchCountry(selectValue, countries);
+  const { foundCountry } = useFetchCountry(selectValue, countries); // get the country using the selectValue as countryId
 
-  const handleCloseOpenCountryList = () => {
+  const handleCloseOpenCountryList = () => { // handling toggle of lists on door icon click
     setOpenCountryList(() => false)
   }
 
@@ -42,6 +42,7 @@ const FormComponent = ({lang, countries, selectValue, amount, inputValue, handle
       </form>
 
       <div className={openCountryList ? "block" : "hidden"} onClick={handleCloseOpenCountryList}>
+        {/* List of countries and their flags */}
         <PairConversionList 
           countries={countries} 
           lang={lang}

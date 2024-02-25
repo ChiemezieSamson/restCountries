@@ -12,8 +12,9 @@ import Loading from '../../Loading/Loading';
 const CountiersIndex = () => {
   const [,lang,, width, countries, count, showCount, handleSetCount, handleSetShowCount, handleSetButtonClicked, buttonClicked, handleSetSearchResult,
     handleSetArrangeResult, searchResult, finalResult, loading, Tloading] = useOutletContext();
+  const stillLoading = loading && Tloading
 
-    const stillLoading = loading && Tloading
+
   return (
     <div className='pt-14'>
       <div className='mb-20'>
