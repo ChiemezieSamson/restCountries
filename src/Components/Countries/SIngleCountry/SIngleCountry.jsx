@@ -17,7 +17,7 @@ const SIngleCountry = () => {
       {/* Country Image and coat of Arms*/}
       <div className='relative isolate after:absolute after:inset-0 after:bg-zinc-950/40 after:backdrop-blur-sm after:backdrop-brightness-125 md:max-h-[80dvh]'>
         <img src={country?.flag?.svg ? country?.flag?.svg : country?.flag?.png} loading="lazy" alt={country?.flag?.alt} className='aspect-video md:max-h-[80dvh]'/>
-        <h1 className='absolute inset-0 grid justify-center items-center z-20 dark_text font-poppins font-extrabold text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl uppercase'>
+        <h1 className='absolute inset-0 grid justify-center items-center z-20 dark_text font-poppins font-extrabold text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl uppercase px-3'>
           {country?.name?.common}
         </h1>
 
