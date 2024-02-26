@@ -29,22 +29,20 @@ A web application meticulously designed to offer visually appealing and concise 
 The web app was actually an upgrade from my previous app [World Countries Datas](https://worldcountries-data.netlify.app/)
 
 > [!Warning]
-> still using the free exchange rate api for currency exchange rate, this only fetches onec a day so it might not be same with the most current one
-
-So _please_ do upgrade to a paid version after cloning this project.
+> Please be aware that the current implementation utilizes a free version of the ExchangeRate API for fetching currency exchange rates, which is limited to once a day. As a result, the displayed rates might not always reflect the most up-to-date values. To ensure accurate and real-time currency information, it is recommended to consider upgrading to a paid version of the ExchangeRate API after cloning this project.
 
 > [!Tip]
 > Population = Displays the country name, the country total population and the percentage of the country population to the world total population
 >
-> Countries = Have three ontop button (List, Grid, details) which handles the way the information for each country is displayed.
+> Countries = Have three "Selection" button (List, Grid, details) which handles the way the information for each country is displayed.
 >
-> Currencies = Do click on the unsupported currency code arrow to see the countries which the webite do not support their currency conversion
+> Currencies = Feel free to click on the arrow associated with unsupported currency codes to explore a list of countries for which the website currently does not support currency conversion.
 
 Also, Feel free to explore our web application! You never know what amazing discoveries await you.
 
 ## The Problem
 
-90% of the data on the web app is from [restCountries api](https://restcountries.com/) and [ExchangeRate api](https://www.exchangerate-api.com/) and some of the information of their api are not yet uptodate with each other.
+Please note that approximately 90% of the data featured on the web app is sourced from the [RestCountries API](https://restcountries.com/) and [ExchangeRate API](https://www.exchangerate-api.com/). It's important to be aware that there may be discrepancies in some information between these APIs, as updates to their data may not be synchronized in real-time. Users are advised to consider this while interacting with the app, and I appreciate your understanding as I strive to provide the most accurate and up-to-date information available from these external sources.
 
 ## Current Status
 
@@ -54,7 +52,8 @@ Also, Feel free to explore our web application! You never know what amazing disc
 
 > [!Note]
 > Add more features like:
-> interesting places to visit around the glob, Images of each counries capital and some cities
+> Interesting places to visit around the glob.
+> Images of each country capital and some of their cities
 > Allowing users to share some of the countries information on social media.
 > Saving or downloading countries image
 
