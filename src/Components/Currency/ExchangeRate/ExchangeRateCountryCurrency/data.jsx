@@ -24,5 +24,20 @@ export const NameTags = {
 		en: "Next Update",
     ko: "다음 업데이트",
     zh: "下次更新"
-	}
+	},
+  country: {
+    en: "Country",
+    ko: "국가",
+    zh: "国家",
+  },
+  currency_name_code: {
+    en: "Currency Name & Code",
+    ko: "통화명 및 코드",
+    zh: "货币名称和代码",
+  },
+  exchange_rate: {
+    en: "Exchange Rate",
+    ko: "환율",
+    zh: "汇率",
+  },
 }

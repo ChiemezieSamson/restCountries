@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import Search from '../../../../sharedComponent/Search/Search'
 import ExchangeRateSlectionButton from '../ExchangeRateSlectionButton/ExchangeRateSlectionButton'
+import { NameTags } from '../data'
 
 const ExchangerateList = ({countriesRate, lang, handleSetSearchResult, searchResult, finalResult, handleSetArrangeResult}) => {
 
@@ -21,9 +22,9 @@ const ExchangerateList = ({countriesRate, lang, handleSetSearchResult, searchRes
 
       <ul className='grid gap-x-4 max-w-4xl mx-auto p-1 overflow-x-scroll md:overflow-x-hidden pt-10'>
         <li className='grid grid-cols-3 md:grid-cols-4 min-w-[488px] md:min-w-0 pl-1 sm:text-lg lg:text-xl font-poppins font-semibold uppercase pb-1.5'>
-          <span className='col-span-1 hidden md:inline-block'>Country</span> 
-          <span className='col-span-2'>Currency Name & Code</span> 
-          <span className='col-span-1'>Exchange Rate</span> 
+          <span className='col-span-1 hidden md:inline-block'>{NameTags.country[lang]}</span> 
+          <span className='col-span-2'>{NameTags.currency_name_code[lang]}</span> 
+          <span className='col-span-1'>{NameTags.exchange_rate[lang]}</span> 
         </li>
 
         {finalResult?.map((country, index) => {
