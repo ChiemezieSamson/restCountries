@@ -40,7 +40,25 @@ const ExchangeRateCountryCurrency = () => {
       return
     } 
 
+    if(!searchResult[0] && !arrangeResult[0]) {
+      setFinalResult(() => [])
+      return
+    }
+
   }, [arrangeResult, searchResult, lang])
+
+  useEffect(() => {
+    if (finalResult) {
+      const selectedFilter = finalResult.find(country => country.id === countryId)
+
+      if (!selectedFilter) {
+        setFinalResult((countries) => countries)
+      } else {
+        setFinalResult((countries) => countries.filter(country => country.id !== countryId))
+      }
+      
+    }
+  }, [finalResult, countryId])
 
 
   return (
