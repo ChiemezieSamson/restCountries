@@ -12,8 +12,6 @@ const FormComponent = ({lang, countries, selectValue, amount, inputValue, handle
     setOpenCountryList(() => false)
   }
 
-  console.log(amount);
-
   return (
     <div>
       <form id="search-form" role="search" onSubmit={(e) => e.preventDefault()} className='relative block'> 

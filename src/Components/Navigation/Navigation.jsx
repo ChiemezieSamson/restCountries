@@ -6,6 +6,7 @@ import { LanguageToggleButton } from '../LanguageTransAction/LanguageAction';
 
 const Navigation = ({lang, setIsLanguage, handleCloseSideBar, navBar, toggleNavBar}) => {
   const location = useLocation();
+  const path = location.pathname.split("/")[1] ? "/" + location.pathname.split("/")[1] : location.pathname
 
   return (
     <nav className='grid grid-flow-col justify-between p-5 max-w-7xl mx-auto dark_text relative isolate'>
@@ -18,7 +19,7 @@ const Navigation = ({lang, setIsLanguage, handleCloseSideBar, navBar, toggleNavB
             <li key={link.id} className='inline-block px-1 mx-0.5 group' onClick={handleCloseSideBar}>
               <Link to={link.url} className={"relative"}>
                 <span className='text-lg font-poppins inline-block font-semibold uppercase leading-3'>{link.name[lang]}</span>
-                <span className={location.pathname === link.url ? "active" : "navlink"}></span>
+                <span className={path === link.url ? "active" : "navlink"}></span>
               </Link>
             </li>
           )
