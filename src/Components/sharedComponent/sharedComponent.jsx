@@ -87,7 +87,7 @@ export const useApiFetchingTranslatedData = (login2) => {
 };
 
 // fetching the main data from the Exchangerate API
-export const useApiFetchingExchangeRate = (loginUrl, loginKey, code) => {
+export const useApiFetchingExchangeRate = (loginUrl, loginKey, code = "USD") => {
 	const [exchangerate, setExchangerate] = useState(null);
 	const [exchangerateLoading, setExchangerateLoading] = useState(true);
 	const [exchangerateError, setExchangerateError] = useState(null);
