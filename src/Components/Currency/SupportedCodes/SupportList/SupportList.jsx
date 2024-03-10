@@ -35,7 +35,7 @@ const SupportList = ({finalResult, lang}) => {
             
             <Link to={`/currency/exchange_rate/${country?.id}`} 
               className='grid sm:grid-cols-4 gap-x-3 mb-4 font-poppins font-semibold capitalize text-sm sm:text-base lg:text-lg sm:items-center sm:justify-center p-2 rounded-xl dark:group-hover:textShawdo
-              group-hover:backdrop-blur-[5px] dark:group-hover:backdrop-blur-[0.5px]'
+             group-hover:backdrop-blur-[5px] sm:group-hover:backdrop-blur-none dark:group-hover:backdrop-blur-[0.5px]'
             >
               <span className='grid grid-cols-2 sm:inline-block gap-x-4'><span className='sm:hidden'>{Heading.country[lang]}:</span> <span>{country?.name[lang]?.slice(0, 13)}{country?.name[lang]?.length > 13 ? "..." : ""}</span></span>
               <span className='grid grid-cols-2 sm:inline-block gap-x-4' title={country?.currency_name[lang]?.length > 13 ? country?.currency_name[lang] : ""}>
