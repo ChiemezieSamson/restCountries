@@ -241,7 +241,7 @@ export const RegionListComponent = ({region, lang}) => {
 				<li key={region.id} className='inline-block text-center mt-10 '>
 					<Link to={region.url}>
 						<figure className='inline-block'>
-							<img src={region.image} alt={region.name[lang]} className='size-28 sm:max-h-36 sm:w-full aspect-video object-fill mx-auto'/>
+							<img src={region.image} alt={region.name[lang]} className='size-28 sm:max-h-36 sm:w-full aspect-video object-contain mx-auto'/>
 							<figcaption className='inline-block mt-3 font-poppins font-semibold capitalize'>{region.name[lang]}</figcaption>
 						</figure>
 					</Link>

@@ -50,7 +50,7 @@ export const regionByLanguage = (regionsId, lang) => {
 
 export const singleRegionData = {
 	title: {
-		en: "Countries in the",
+		en: "Countries in",
 		zh: "国家",
 		ko: "의 국가들"
 	},

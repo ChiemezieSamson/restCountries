@@ -16,7 +16,9 @@ const SingleRegion = () => {
   return (
     <div className='py-32'>
       <h1 className='headTitle1'>
-        {lang === "en" ? `${singleRegionData.title[lang]} ${RegionName}` : `${RegionName}${singleRegionData.title[lang]}`}
+        <span className='normal-case'>
+          {lang === "en" ? `${singleRegionData.title[lang]} ${RegionName}` : `${RegionName}${singleRegionData.title[lang]}`}
+        </span>
       </h1>
       <h4 className='headSubTitle1'><strong>{total[lang]} :</strong> {countries ? countries.length : 0}</h4>
 
@@ -26,7 +28,7 @@ const SingleRegion = () => {
       <ul className='mt-20 px-4 gap-4 grid xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5'>
         {countries?.map((country, index) => {				
           return (
-            <li key={country?.id + index.toString()} className='inline-block relative group hover:scale-105 focus-within:scale-110 transitionEffect' title={country?.name[lang]?.length > 10 ? country?.name[lang] : ""}>
+            <li key={country?.id + index.toString()} className='inline-block relative group hover:scale-105 focus-within:scale-110 transitionEffect' title={country?.name[lang]?.length > 13 ? country?.name[lang] : ""}>
               <div className='absolute left-0 inset-y-0 grid items-center justify-center -z-10'>
                 <img 
                   src={country?.flag?.svg} 
@@ -40,8 +42,8 @@ const SingleRegion = () => {
                 className='lg:text-lg font-poppins grid items-center justify-center bg-slate-300/300 textLight dark:dark_text font-semibold dark:bgLight p-2 rounded-xl shadow-md dark:shadow-slate-50/50 
                 shadow-slate-800/50 uppercase tracking-widest transitionEffect dark:group-hover:textShawdo'>
                   <div className='group-hover:backdrop-blur-[5px] dark:group-hover:backdrop-blur-[5px] w-full'>
-                    {country?.name[lang] === undefined ? country?.id?.slice(0, 10) : country?.name[lang]?.slice(0, 10)}
-                    {country?.name[lang]?.length > 10 && "..."}
+                    {country?.name[lang] === undefined ? country?.id?.slice(0, 13) : country?.name[lang]?.slice(0, 13)}
+                    {country?.name[lang]?.length > 13 && "..."}
                   </div>
               </Link>
             </li>
