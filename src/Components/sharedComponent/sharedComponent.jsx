@@ -236,19 +236,20 @@ export const total = {
 export const RegionListComponent = ({region, lang}) => {
 	return (
 		<ul className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-5 mt-20 items-center justify-center'>
-		{region.map(region => {
-			return (
-				<li key={region.id} className='inline-block text-center mt-10 '>
-					<Link to={region.url}>
-						<figure className='inline-block'>
-							<img src={region.image} alt={region.name[lang]} className='size-28 sm:max-h-36 sm:w-full aspect-video object-contain mx-auto'/>
-							<figcaption className='inline-block mt-3 font-poppins font-semibold capitalize'>{region.name[lang]}</figcaption>
-						</figure>
-					</Link>
-				</li>
-			)
-		})}
-	</ul>
+			{region.map(region => {
+				return (
+					<li key={region.id} className='inline-block text-center mt-10 hover:scale-105 focus-within:scale-110 transitionEffect textLight dark:dark_text rounded-xl hover:shadow-md dark:hover:shadow-slate-50/50 
+					hover:shadow-slate-800/50 py-1.5'>
+						<Link to={region.url} className="block">
+							<figure className='inline-block'>
+								<img src={region.image} alt={region.name[lang]} className='size-28 sm:max-h-36 sm:w-full aspect-video object-contain mx-auto'/>
+								<figcaption className='inline-block mt-3 font-poppins font-semibold capitalize'>{region.name[lang]}</figcaption>
+							</figure>
+						</Link>
+					</li>
+				)
+			})}
+		</ul>
 	)
 }
 
